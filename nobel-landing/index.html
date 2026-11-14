@@ -4,171 +4,149 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>诺贝尔奖数据平台 · 126 年 1036 位得主</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232563eb'/%3E%3Ccircle cx='16' cy='13' r='6' fill='%23fff'/%3E%3Cpath d='M11 24l5-6 5 6z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%236d28d9'/%3E%3Ccircle cx='16' cy='13' r='6' fill='%23fff'/%3E%3Cpath d='M11 24l5-6 5 6z' fill='%23fff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --slate-50:#f8fafc; --slate-100:#f1f5f9; --slate-200:#e2e8f0; --slate-300:#cbd5e1;
-  --slate-400:#94a3b8; --slate-500:#64748b; --slate-600:#475569; --slate-700:#334155;
-  --slate-800:#1e293b; --slate-900:#0f172a;
-  --blue-50:#eff6ff; --blue-100:#dbeafe; --blue-400:#60a5fa; --blue-500:#3b82f6;
-  --blue-600:#2563eb; --blue-700:#1d4ed8;
-  --green-100:#dcfce7; --green-600:#16a34a; --green-500:#22c55e;
-  --purple-100:#f3e8ff; --purple-600:#9333ea;
-  --orange-100:#ffedd5; --orange-600:#ea580c;
-  --pink-100:#fce7f3; --pink-600:#db2777;
-  --cyan-100:#cffafe; --cyan-600:#0891b2;
-  --amber-100:#fef3c7; --amber-600:#d97706;
+  --s50:#f8fafc;--s100:#f1f5f9;--s200:#e2e8f0;--s300:#cbd5e1;--s400:#94a3b8;
+  --s500:#64748b;--s600:#475569;--s700:#334155;--s800:#1e293b;--s900:#0f172a;
+  --indigo:#6366f1;--violet:#7c3aed;--purple:#9333ea;--blue:#3b82f6;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:'Inter',-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
-  background:var(--slate-50); color:var(--slate-900); line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  background:var(--s100);color:var(--s900);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1152px;margin:0 auto;padding:0 24px}
-/* nav */
-nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.92);
-  backdrop-filter:blur(12px);border-bottom:1px solid var(--slate-200)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.8);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(226,232,240,.6)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px}
 .brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px}
-.brand .mark{width:26px;height:26px;border-radius:7px;background:var(--blue-600);position:relative;flex:0 0 auto}
-.brand .mark::before{content:"";position:absolute;left:50%;top:5px;transform:translateX(-50%);
+.brand .mark{width:28px;height:28px;border-radius:9px;background:linear-gradient(135deg,var(--indigo),var(--violet));
+  position:relative;flex:0 0 auto;box-shadow:0 6px 14px -6px rgba(99,102,241,.9)}
+.brand .mark::before{content:"";position:absolute;left:50%;top:6px;transform:translateX(-50%);
   width:10px;height:10px;border-radius:50%;background:#fff}
 .brand .mark::after{content:"";position:absolute;left:50%;bottom:5px;transform:translateX(-50%);
-  width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:8px solid #fff}
-.navlinks{display:none;gap:22px;font-size:14px;color:var(--slate-600)}
-.navlinks a:hover{color:var(--slate-900)}
-.btn{display:inline-block;border-radius:8px;font-weight:700;cursor:pointer;transition:.15s;
-  border:1px solid transparent;text-align:center}
-.btn-sm{padding:11px 18px;font-size:13.5px}
-.btn-lg{padding:15px 30px;font-size:15.5px}
-.btn-blue{background:var(--blue-600);color:#fff}
-.btn-blue:hover{background:var(--blue-700)}
-.btn-white{background:#fff;color:var(--blue-600)}
-.btn-white:hover{background:var(--blue-50)}
-.btn-ghost{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.25)}
-.btn-ghost:hover{background:rgba(255,255,255,.18)}
-/* hero */
-.hero{padding:110px 0 64px;background:linear-gradient(180deg,var(--slate-900),var(--slate-800));color:#fff;text-align:center}
-.pill{display:inline-block;padding:7px 15px;border-radius:999px;font-size:12.5px;font-weight:600;
-  background:rgba(59,130,246,.2);color:var(--blue-400);margin-bottom:22px;letter-spacing:.02em}
-.hero h1{font-size:31px;line-height:1.22;font-weight:800;letter-spacing:-.02em;margin-bottom:16px;text-wrap:balance}
-.hero p{font-size:16px;color:var(--slate-400);max-width:620px;margin:0 auto 30px;text-wrap:pretty}
-.br-desk{display:block}
-.hero .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-/* section shell */
-section.block{padding:64px 0}
-.sec-head{text-align:center;margin-bottom:44px}
-.sec-head h2{font-size:26px;font-weight:800;letter-spacing:-.01em;margin-bottom:10px}
-.sec-head p{color:var(--slate-600);font-size:15px}
-.eyebrow{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--blue-600)}
-
-/* hero product preview */
-.preview{max-width:780px;margin:44px auto 0;background:#fff;border-radius:14px;padding:14px;
-  box-shadow:0 30px 60px -20px rgba(2,6,23,.55);text-align:left}
-.prev-bar{display:flex;align-items:center;gap:10px;padding:2px 6px 12px;border-bottom:1px solid var(--slate-200);margin-bottom:10px}
-.prev-dots{display:flex;gap:5px}
-.prev-dots i{width:8px;height:8px;border-radius:50%;background:var(--slate-200);display:block}
-.prev-dots i:first-child{background:#fca5a5}
-.prev-dots i:nth-child(2){background:#fcd34d}
-.prev-dots i:nth-child(3){background:#86efac}
-.prev-title{font-size:12.5px;font-weight:600;color:var(--slate-700)}
-.prev-n{margin-left:auto;font-size:11.5px;color:var(--slate-500);white-space:nowrap}
-.prev-row{display:grid;grid-template-columns:auto 1fr auto;gap:8px 10px;align-items:center;
-  padding:9px 6px;border-radius:8px}
-.prev-row+.prev-row{border-top:1px solid var(--slate-100)}
-.prev-row .pn{font-size:12.5px;font-weight:600;color:var(--slate-800);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.prev-row .ps{font-size:11px;color:var(--slate-500)}
-.prev-row .pc{grid-column:1/-1;font-size:12px;color:var(--slate-600)}
-.pb{font-size:10.5px;padding:2px 8px;border-radius:99px;border:1px solid currentColor;white-space:nowrap}
-.b0{color:#7c3aed}.b1{color:#15803d}
-
-/* stats */
+  width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:7px solid #fff}
+.navlinks{display:none;gap:22px;font-size:13.5px;color:var(--s600);font-weight:500}
+.navlinks a:hover{color:var(--s900)}
+.btn{display:inline-block;border-radius:12px;font-weight:600;cursor:pointer;transition:.18s;text-align:center;border:0}
+.btn-sm{padding:10px 16px;font-size:13px}
+.btn-lg{padding:14px 26px;font-size:14.5px;border-radius:14px}
+.btn-solid{background:linear-gradient(135deg,var(--indigo),var(--violet));color:#fff;
+  box-shadow:0 14px 26px -14px rgba(99,102,241,.95)}
+.btn-solid:hover{transform:translateY(-1px);box-shadow:0 18px 32px -14px rgba(99,102,241,1)}
+.btn-white{background:#fff;color:#5b21b6;box-shadow:0 12px 24px -14px rgba(15,23,42,.5)}
+.btn-dark{background:var(--s800);color:#fff}
+.btn-dark:hover{background:var(--s700)}
+.hero{padding:52px 0 30px;text-align:center;position:relative}
+.kicker{display:inline-block;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;
+  color:#6d28d9;background:#ede9fe;border-radius:999px;padding:7px 15px;margin-bottom:20px}
+.hero h1{font-size:32px;line-height:1.2;font-weight:800;letter-spacing:-.025em;margin-bottom:14px;text-wrap:balance}
+.hero .sub{font-size:14.5px;color:var(--s600);max-width:600px;margin:0 auto 26px;text-wrap:pretty}
+.hero .actions{display:flex;gap:11px;justify-content:center;flex-wrap:wrap;margin-bottom:44px}
+.stack{position:relative;max-width:660px;margin:0 auto;perspective:1200px;padding:0 4px}
+.stack .bg{position:absolute;inset:0;border-radius:24px;background:linear-gradient(135deg,#818cf8,#a855f7);
+  transform:rotate(5deg) translate(14px,18px);opacity:.22}
+.stack .mid{position:absolute;inset:0;border-radius:24px;background:linear-gradient(135deg,#8b5cf6,#6366f1);
+  transform:rotate(2.5deg) translate(7px,9px);opacity:.42;box-shadow:0 18px 40px -20px rgba(79,70,229,.6)}
+.stack .front{position:relative;border-radius:24px;background:linear-gradient(135deg,#6366f1,#7c3aed 55%,#9333ea);
+  color:#fff;padding:22px;box-shadow:0 40px 70px -30px rgba(67,56,202,.85);text-align:left}
+.stack .bar{display:flex;align-items:center;gap:8px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.22)}
+.dot{width:9px;height:9px;border-radius:50%;display:block}
+.bar .t{font-size:12px;font-weight:600;opacity:.95}
+.bar .n{margin-left:auto;font-size:11px;opacity:.75;white-space:nowrap}
+.prow{padding:9px 0;border-bottom:1px solid rgba(255,255,255,.13)}
+.prow:last-child{border-bottom:0}
+.prow .h{display:flex;align-items:center;gap:8px;margin-bottom:3px}
+.pb{font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;background:rgba(255,255,255,.18)}
+.pn{font-size:12.5px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ps{margin-left:auto;font-size:10.5px;opacity:.7}
+.pc{font-size:11.5px;color:rgba(255,255,255,.82);padding-left:2px}
+section{padding:64px 0}
+.sec-head{text-align:center;margin-bottom:40px}
+.sec-head h2{font-size:25px;font-weight:800;letter-spacing:-.02em;margin-bottom:9px;text-wrap:balance}
+.sec-head p{color:var(--s600);font-size:14.5px}
+.lcard{position:relative;border-radius:20px}
+.lcard>.plate{position:absolute;inset:0;border-radius:20px;transform:translate(9px,9px);transition:transform .22s}
+.lcard>article{position:relative;background:#fff;border:1px solid var(--s200);border-radius:20px;padding:24px;
+  height:100%;transition:transform .22s}
+.lcard:hover>.plate{transform:translate(13px,13px)}
+.p-pink{background:linear-gradient(135deg,#f472b6,#f43f5e)}
+.p-amber{background:linear-gradient(135deg,#fbbf24,#f97316)}
+.p-emerald{background:linear-gradient(135deg,#34d399,#14b8a6)}
+.p-violet{background:linear-gradient(135deg,#a78bfa,#7c3aed)}
+.p-rose{background:linear-gradient(135deg,#fb7185,#e11d48)}
+.p-sky{background:linear-gradient(135deg,#38bdf8,#2563eb)}
+.icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.icon svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.i-pink{background:#fce7f3;color:#db2777}
+.i-amber{background:#fef3c7;color:#b45309}
+.i-emerald{background:#d1fae5;color:#047857}
+.i-violet{background:#ede9fe;color:#6d28d9}
+.i-rose{background:#ffe4e6;color:#be123c}
+.i-sky{background:#e0f2fe;color:#0369a1}
+.lcard h3{font-size:16.5px;font-weight:700;margin-bottom:6px}
+.lcard p{font-size:13.5px;color:var(--s600)}
+.grid3{display:grid;grid-template-columns:1fr;gap:20px}
+.dark{position:relative;border-radius:26px;background:linear-gradient(135deg,var(--s900),var(--s800));
+  color:#fff;padding:34px 24px;overflow:hidden}
+.dark .blob{position:absolute;border-radius:50%;filter:blur(60px)}
+.dark .blob.a{width:260px;height:260px;background:rgba(59,130,246,.28);top:-60px;right:-40px}
+.dark .blob.b{width:220px;height:220px;background:rgba(168,85,247,.26);bottom:-70px;left:-30px}
+.dark .inner{position:relative;display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
+.dark h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin:8px 0 10px}
+.dark .lead{color:var(--s300);font-size:13.5px;margin-bottom:18px}
+.dark .actions{display:flex;gap:10px;flex-wrap:wrap}
+.glass{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:20px;
+  padding:16px;backdrop-filter:blur(12px);transform:rotate(-2.5deg);box-shadow:0 30px 60px -24px rgba(0,0,0,.7)}
+.glass .grow{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#e2e8f0;
+  padding:7px 0;border-bottom:1px dashed rgba(255,255,255,.14)}
+.glass .grow:last-child{border-bottom:0}
+.glass .grow b{font-weight:700}
+.gbar{height:7px;border-radius:99px;background:rgba(255,255,255,.14);overflow:hidden;flex:1;margin:0 10px}
+.gbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#818cf8,#c084fc)}
 .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.stat{background:#fff;border:1px solid var(--slate-200);border-radius:12px;padding:20px;text-align:center}
-.stat b{display:block;font-size:27px;font-weight:800;letter-spacing:-.02em}
-.stat span{font-size:12.5px;color:var(--slate-600)}
-/* feature grid */
-.grid-auto{display:grid;grid-template-columns:1fr;gap:18px}
-.card{background:#fff;border:1px solid var(--slate-200);border-radius:12px;padding:22px;
-  transition:box-shadow .18s,transform .18s}
-.card:hover{box-shadow:0 12px 24px -12px rgba(15,23,42,.18);transform:translateY(-2px)}
-.icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
-.icon svg{width:22px;height:22px;stroke-width:2;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
-.i-blue{background:var(--blue-100);color:var(--blue-600)}
-.i-green{background:var(--green-100);color:var(--green-600)}
-.i-purple{background:var(--purple-100);color:var(--purple-600)}
-.i-orange{background:var(--orange-100);color:var(--orange-600)}
-.i-pink{background:var(--pink-100);color:var(--pink-600)}
-.i-cyan{background:var(--cyan-100);color:var(--cyan-600)}
-.card h3{font-size:16.5px;font-weight:700;margin-bottom:6px}
-.card p{font-size:13.5px;color:var(--slate-600)}
-/* detail split */
-.split{display:grid;grid-template-columns:1fr;gap:36px;align-items:center}
-.split h2{font-size:26px;font-weight:800;letter-spacing:-.01em;margin:8px 0 12px}
-.split .lead{color:var(--slate-600);font-size:14.5px;margin-bottom:20px}
-.checks{list-style:none;display:flex;flex-direction:column;gap:11px}
-.checks li{display:flex;gap:11px;align-items:flex-start;font-size:14px;color:var(--slate-700)}
-.checks span{overflow-wrap:anywhere}
-.checks svg{width:18px;height:18px;flex:0 0 auto;margin-top:2px;stroke:var(--green-500);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.panel{background:var(--slate-100);border-radius:16px;padding:20px}
-.panel-inner{background:#fff;border-radius:12px;padding:18px;box-shadow:0 1px 2px rgba(15,23,42,.06)}
-.panel-head{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;font-weight:700;margin-bottom:16px}
-.panel-head em{font-style:normal;color:var(--slate-500);font-weight:500;font-size:12px}
-.bar-row{display:grid;grid-template-columns:52px 1fr 38px;align-items:center;gap:10px;margin-bottom:11px;font-size:12px;color:var(--slate-600)}
-.bar{height:9px;border-radius:99px;background:var(--slate-100);overflow:hidden}
-.bar i{display:block;height:100%;border-radius:99px;background:var(--blue-500)}
-.bar-row b{text-align:right;font-weight:600;color:var(--slate-700)}
-/* prize cards */
-.prize{background:#fff;border:1px solid var(--slate-200);border-radius:12px;padding:20px}
-.prize .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:12px}
-.prize h3{font-size:16px;font-weight:800}
-.prize .n{font-size:12px;color:var(--slate-500);white-space:nowrap}
-.tag{display:inline-block;font-size:11.5px;padding:3px 9px;border-radius:999px;font-weight:600;margin-bottom:10px}
-.t-blue{background:var(--blue-50);color:var(--blue-700)}
-.t-green{background:var(--green-100);color:#15803d}
-.t-purple{background:var(--purple-100);color:#7e22ce}
-.t-orange{background:var(--orange-100);color:#c2410c}
-.t-amber{background:var(--amber-100);color:#b45309}
-.t-cyan{background:var(--cyan-100);color:#0e7490}
-.prize .who{font-size:13.5px;font-weight:600;color:var(--slate-800);margin-bottom:4px}
-.prize .what{font-size:13px;color:var(--slate-600)}
-/* recent */
-.recent{display:grid;grid-template-columns:1fr;gap:16px}
-.rec{background:#fff;border:1px solid var(--slate-200);border-radius:12px;padding:20px}
-.rec .yr{font-size:12px;font-weight:800;color:var(--blue-600);letter-spacing:.06em}
-.rec h3{font-size:15.5px;font-weight:700;margin:6px 0 10px}
-.rec ul{list-style:none;display:flex;flex-direction:column;gap:7px;font-size:13px;color:var(--slate-600)}
-.rec ul b{color:var(--slate-800);font-weight:600}
-/* CTA */
-.cta{background:var(--blue-600);color:#fff;text-align:center;padding:56px 0}
-.cta h2{font-size:26px;font-weight:800;margin-bottom:10px}
-.cta p{color:#dbeafe;font-size:15px;margin-bottom:26px}
-/* footer */
-footer{padding:30px 0;background:#fff;border-top:1px solid var(--slate-200);font-size:12.5px;color:var(--slate-600)}
+.stat{background:#fff;border:1px solid var(--s200);border-radius:18px;padding:18px;text-align:center;
+  box-shadow:0 10px 22px -18px rgba(15,23,42,.45)}
+.stat b{display:block;font-size:25px;font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(135deg,#6366f1,#9333ea);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:12px;color:var(--s500)}
+.prize{display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid var(--s200);
+  border-radius:18px;padding:16px 18px;box-shadow:0 12px 26px -22px rgba(15,23,42,.5)}
+.prize .sq{width:40px;height:40px;border-radius:12px;flex:0 0 auto;display:flex;align-items:center;
+  justify-content:center;font-size:13px;font-weight:800;color:#fff}
+.prize h4{font-size:14.5px;font-weight:700;margin-bottom:2px}
+.prize p{font-size:12.5px;color:var(--s600)}
+.prize .cnt{margin-left:auto;font-size:11.5px;color:var(--s500);white-space:nowrap;font-weight:600}
+.cta{position:relative;border-radius:26px;padding:44px 24px;text-align:center;color:#fff;overflow:hidden;
+  background:linear-gradient(135deg,#6366f1,#7c3aed 60%,#a855f7)}
+.cta::after{content:"";position:absolute;width:320px;height:320px;border-radius:50%;
+  background:rgba(255,255,255,.16);filter:blur(60px);top:-120px;right:-80px}
+.cta h2{font-size:24px;font-weight:800;margin-bottom:9px;position:relative}
+.cta p{color:#ede9fe;font-size:13.5px;margin-bottom:22px;position:relative}
+.cta a{position:relative}
+footer{padding:30px 0 40px;font-size:12px;color:var(--s500)}
 footer .wrap{display:flex;flex-direction:column;gap:8px}
-footer a{color:var(--blue-600)}
+footer a{color:#6d28d9}
 @media(min-width:720px){
   .navlinks{display:flex}
-  .hero{padding:150px 0 84px}
-  .hero h1{font-size:52px}
-  .br-desk{display:block}
-  .hero p{font-size:18px}
+  .hero{padding:76px 0 40px}
+  .hero h1{font-size:50px}
+  .hero .sub{font-size:16px}
   .stats{grid-template-columns:repeat(4,1fr)}
-  .grid-auto{grid-template-columns:repeat(2,1fr)}
-  .recent{grid-template-columns:repeat(2,1fr)}
+  .grid3{grid-template-columns:repeat(2,1fr);gap:22px}
+  .dark{padding:44px 40px}
+  .dark .inner{grid-template-columns:1.05fr .95fr;gap:44px}
+  .dark h2{font-size:30px}
+  .stack .front{padding:26px}
   footer .wrap{flex-direction:row;justify-content:space-between;align-items:center}
 }
-@media(min-width:960px){
-  .grid-auto{grid-template-columns:repeat(3,1fr)}
-  .split{grid-template-columns:1.05fr .95fr;gap:64px}
-  .recent{grid-template-columns:repeat(3,1fr)}
-  section.block{padding:84px 0}
+@media(min-width:1000px){
+  .grid3{grid-template-columns:repeat(3,1fr)}
+  section{padding:84px 0}
 }
 </style>
 </head>
@@ -180,37 +158,52 @@ footer a{color:var(--blue-600)}
     <div class="navlinks">
       <a href="#features">功能</a>
       <a href="#prizes">六大奖项</a>
-      <a href="#recent">近年获奖</a>
+      <a href="#data">数据</a>
       <a href="https://sky-blue-ai.github.io/common-website/nobel/">交互全表</a>
     </div>
-    <a class="btn btn-blue btn-sm" href="https://sky-blue-ai.github.io/common-website/nobel/">打开全表</a>
+    <a class="btn btn-solid btn-sm" href="https://sky-blue-ai.github.io/common-website/nobel/">打开全表</a>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap">
-    <span class="pill">1901–2026 · 六大奖项 · 官方数据</span>
-    <h1>126 年诺贝尔奖<br class="br-desk">1036 条记录，一页看完</h1>
-    <p>每位获奖者、每一条官方授奖理由的中文提炼、奖金份额与官网链接，全部在一个可以搜索筛选的页面里。</p>
+    <span class="kicker">1901–2026 · 六大奖项 · 官方数据</span>
+    <h1>126 年诺贝尔奖<br>1036 条记录，一页看完</h1>
+    <p class="sub">每位获奖者、每条官方授奖理由的中文提炼、奖金份额与官网链接，全在一个可搜索、可筛选的页面里。</p>
     <div class="actions">
-      <a class="btn btn-blue btn-lg" href="https://sky-blue-ai.github.io/common-website/nobel/">进入交互全表 →</a>
-      <a class="btn btn-ghost btn-lg" href="#prizes">先看六大奖项</a>
+      <a class="btn btn-solid btn-lg" href="https://sky-blue-ai.github.io/common-website/nobel/">进入交互全表 →</a>
+      <a class="btn btn-white btn-lg" href="#features">看它怎么用</a>
     </div>
 
-    <div class="preview">
-      <div class="prev-bar">
-        <span class="prev-dots"><i></i><i></i><i></i></span>
-        <span class="prev-title">诺贝尔奖全表 · 搜索「量子」</span>
-        <span class="prev-n">显示 28 / 1036 条</span>
+    <div class="stack">
+      <div class="bg"></div>
+      <div class="mid"></div>
+      <div class="front">
+        <div class="bar">
+          <span class="dot" style="background:#fda4af"></span>
+          <span class="dot" style="background:#fcd34d"></span>
+          <span class="dot" style="background:#86efac"></span>
+          <span class="t">诺贝尔奖全表 · 搜索「量子」</span>
+          <span class="n">28 / 1036 条</span>
+        </div>
+        <div class="prow">
+          <div class="h"><span class="pb">物理</span><span class="pn">John Clarke（约翰·克拉克）</span><span class="ps">1/3</span></div>
+          <div class="pc">发现电路中的宏观量子隧穿与能量量子化</div>
+        </div>
+        <div class="prow">
+          <div class="h"><span class="pb">物理</span><span class="pn">Serge Haroche（塞尔日·阿罗什）</span><span class="ps">1/2</span></div>
+          <div class="pc">实现单个量子系统的测量与操控</div>
+        </div>
+        <div class="prow">
+          <div class="h"><span class="pb">化学</span><span class="pn">Moungi G. Bawendi（蒙吉·巴文迪）</span><span class="ps">1/3</span></div>
+          <div class="pc">发现并合成量子点</div>
+        </div>
       </div>
-      <div class="prev-row"><span class="pb b0">物理</span><span class="pn">John Clarke（约翰·克拉克）</span><span class="ps">1/3</span><span class="pc">发现电路中的宏观量子隧穿与能量量子化</span></div>
-      <div class="prev-row"><span class="pb b0">物理</span><span class="pn">Serge Haroche（塞尔日·阿罗什）</span><span class="ps">1/2</span><span class="pc">实现单个量子系统的测量与操控</span></div>
-      <div class="prev-row"><span class="pb b1">化学</span><span class="pn">Moungi G. Bawendi（蒙吉·巴文迪）</span><span class="ps">1/3</span><span class="pc">发现并合成量子点</span></div>
     </div>
   </div>
 </header>
 
-<section class="block" style="padding-top:36px">
+<section id="data" style="padding-top:34px">
   <div class="wrap">
     <div class="stats">
       <div class="stat"><b>1036</b><span>条获奖记录</span></div>
@@ -221,173 +214,147 @@ footer a{color:var(--blue-600)}
   </div>
 </section>
 
-<section class="block" id="features">
+<section id="features">
   <div class="wrap">
     <div class="sec-head">
-      <h2>一个页面里能做的事</h2>
-      <p>不是 PDF，不是截图，是可以点、可以搜、可以筛的数据表</p>
+      <h2>三层信息，逐层展开</h2>
+      <p>先看到年份与得主，再看到一行贡献，点开才是份额与原文链接</p>
     </div>
-    <div class="grid-auto">
-      <div class="card">
-        <div class="icon i-blue"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.3-4.3"/></svg></div>
-        <h3>全文搜索</h3>
-        <p>输入获奖者（中英文皆可）、贡献关键词或年份，实时过滤 1036 条记录。</p>
+    <div class="grid3">
+      <div class="lcard">
+        <div class="plate p-pink"></div>
+        <article>
+          <div class="icon i-pink"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.3-4.3"/></svg></div>
+          <h3>第一层 · 全文搜索</h3>
+          <p>输入获奖者（中英文皆可）、贡献关键词或年份，1036 条记录实时过滤，右侧随时显示命中数。</p>
+        </article>
       </div>
-      <div class="card">
-        <div class="icon i-green"><svg viewBox="0 0 24 24"><path d="M3 6h18M7 12h10M11 18h2"/></svg></div>
-        <h3>奖项筛选</h3>
-        <p>物理 231 · 化学 202 · 医学 235 · 经济 101 · 文学 123 · 和平 144，一键切换。</p>
+      <div class="lcard">
+        <div class="plate p-amber"></div>
+        <article>
+          <div class="icon i-amber"><svg viewBox="0 0 24 24"><path d="M3 6h18M7 12h10M11 18h2"/></svg></div>
+          <h3>第二层 · 奖项筛选</h3>
+          <p>物理 231 · 化学 202 · 医学 235 · 经济 101 · 文学 123 · 和平 144，六个胶囊一键切换。</p>
+        </article>
       </div>
-      <div class="card">
-        <div class="icon i-purple"><svg viewBox="0 0 24 24"><path d="M8 6v12m8-12v12M4 9h4m8 0h4M4 15h4m8 0h4"/></svg></div>
-        <h3>年份排序</h3>
-        <p>从 2026 倒着看，或从 1901 顺着一届届翻，按年份自动分组。</p>
+      <div class="lcard">
+        <div class="plate p-emerald"></div>
+        <article>
+          <div class="icon i-emerald"><svg viewBox="0 0 24 24"><path d="M9 4h6a2 2 0 012 2v14l-5-3-5 3V6a2 2 0 012-2z"/></svg></div>
+          <h3>第三层 · 详情面板</h3>
+          <p>点任意一条，抽屉里显示完整贡献、奖金份额（独得 / 1/2 / 1/3）与诺贝尔官网对应年份奖项页。</p>
+        </article>
       </div>
-      <div class="card">
-        <div class="icon i-orange"><svg viewBox="0 0 24 24"><path d="M9 4h6a2 2 0 012 2v14l-5-3-5 3V6a2 2 0 012-2z"/></svg></div>
-        <h3>详情弹层</h3>
-        <p>点任意一条，看完整贡献、奖金份额（独得 / 1/2 / 1/3）与获奖者类型。</p>
+      <div class="lcard">
+        <div class="plate p-violet"></div>
+        <article>
+          <div class="icon i-violet"><svg viewBox="0 0 24 24"><path d="M8 6v12m8-12v12M4 9h4m8 0h4M4 15h4m8 0h4"/></svg></div>
+          <h3>年份可正可倒</h3>
+          <p>从 2026 往回翻，或从 1901 顺着看；年份自动分组，长列表也有清晰的路标。</p>
+        </article>
       </div>
-      <div class="card">
-        <div class="icon i-pink"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1"/><path d="M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1"/></svg></div>
-        <h3>直达官网</h3>
-        <p>每条记录都带 NobelPrize.org 对应年份奖项页的链接，随时核对原文。</p>
+      <div class="lcard">
+        <div class="plate p-rose"></div>
+        <article>
+          <div class="icon i-rose"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1"/><path d="M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1"/></svg></div>
+          <h3>每条都能回溯</h3>
+          <p>贡献不是二手叙述，全部来自官方 motivation 原文；每条带官网链接，随时核对。</p>
+        </article>
       </div>
-      <div class="card">
-        <div class="icon i-cyan"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0l4-4m-4 4l-4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg></div>
-        <h3>单文件离线</h3>
-        <p>整站就一个 HTML，数据内联、无外部依赖，发给谁都能打开。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="block" style="background:#fff">
-  <div class="wrap split">
-    <div>
-      <span class="eyebrow">数据质量</span>
-      <h2>贡献是官方理由的中文提炼，不是二手叙述</h2>
-      <p class="lead">每一条都来自 NobelPrize.org 开放 API 的 motivation 原文，压缩成一行中文，不加入原文之外的事实。</p>
-      <ul class="checks">
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span>数据源：api.nobelprize.org/2.1/nobelPrizes（688 个奖项记录）</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span>获奖者姓名用官方英文名，2015–2026 另注中文译名</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span>奖金份额照官方 prize share 标注，机构获奖单列一行</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span>经济学奖自 1969 年起，标注为瑞典中央银行纪念奖</span></li>
-      </ul>
-    </div>
-    <div class="panel">
-      <div class="panel-inner">
-        <div class="panel-head"><span>各奖项记录数</span><em>1901–2026</em></div>
-        <div class="bar-row"><span>物理</span><div class="bar"><i style="width:98%"></i></div><b>231</b></div>
-        <div class="bar-row"><span>化学</span><div class="bar"><i style="width:86%"></i></div><b>202</b></div>
-        <div class="bar-row"><span>医学</span><div class="bar"><i style="width:100%"></i></div><b>235</b></div>
-        <div class="bar-row"><span>经济</span><div class="bar"><i style="width:43%"></i></div><b>101</b></div>
-        <div class="bar-row"><span>文学</span><div class="bar"><i style="width:52%"></i></div><b>123</b></div>
-        <div class="bar-row" style="margin-bottom:0"><span>和平</span><div class="bar"><i style="width:61%"></i></div><b>144</b></div>
+      <div class="lcard">
+        <div class="plate p-sky"></div>
+        <article>
+          <div class="icon i-sky"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0l4-4m-4 4l-4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg></div>
+          <h3>单文件，离线可开</h3>
+          <p>整站一个 HTML，数据内联、无外部依赖，发给别人、存进手机都能打开。</p>
+        </article>
       </div>
     </div>
   </div>
 </section>
 
-<section class="block" id="prizes">
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="dark">
+      <div class="blob a"></div>
+      <div class="blob b"></div>
+      <div class="inner">
+        <div>
+          <span class="kicker" style="background:rgba(129,140,248,.2);color:#c7d2fe">数据质量</span>
+          <h2 style="color:#fff">贡献是官方理由的中文提炼</h2>
+          <p class="lead">688 个奖项记录、1036 条获奖者条目，全部取自 NobelPrize.org 开放 API；中文压缩不加原文之外的事实。</p>
+          <div class="actions">
+            <a class="btn btn-white btn-lg" href="https://sky-blue-ai.github.io/common-website/nobel/">打开全表</a>
+            <a class="btn btn-dark btn-lg" href="https://www.nobelprize.org/prizes/" target="_blank" rel="noopener">诺贝尔官网</a>
+          </div>
+        </div>
+        <div class="glass">
+          <div class="grow"><b>物理</b><div class="gbar"><i style="width:98%"></i></div>231</div>
+          <div class="grow"><b>化学</b><div class="gbar"><i style="width:86%"></i></div>202</div>
+          <div class="grow"><b>医学</b><div class="gbar"><i style="width:100%"></i></div>235</div>
+          <div class="grow"><b>经济</b><div class="gbar"><i style="width:43%"></i></div>101</div>
+          <div class="grow"><b>文学</b><div class="gbar"><i style="width:52%"></i></div>123</div>
+          <div class="grow"><b>和平</b><div class="gbar"><i style="width:61%"></i></div>144</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="prizes">
   <div class="wrap">
     <div class="sec-head">
-      <h2>六大奖项</h2>
-      <p>每个奖项都覆盖从首届到 2026 年的全部颁奖</p>
+      <h2>六大奖项，覆盖到 2026</h2>
+      <p>每个奖项都从首届一路收录到最近一届</p>
     </div>
-    <div class="grid-auto">
+    <div class="grid3">
       <div class="prize">
-        <div class="top"><h3>物理学奖</h3><span class="n">231 条</span></div>
-        <span class="tag t-blue">2026</span>
-        <div class="who">Francis Halzen</div>
-        <div class="what">建设冰立方中微子天文台并发现天体物理高能中微子</div>
+        <div class="sq" style="background:linear-gradient(135deg,#a78bfa,#7c3aed)">物</div>
+        <div><h4>物理学奖 · 2026</h4><p>Francis Halzen：冰立方中微子天文台与天体物理高能中微子</p></div>
+        <div class="cnt">231</div>
       </div>
       <div class="prize">
-        <div class="top"><h3>化学奖</h3><span class="n">202 条</span></div>
-        <span class="tag t-green">2026</span>
-        <div class="who">Henri B. Kagan、Kenso Soai</div>
-        <div class="what">发现不对称有机合成中的非线性效应与自催化</div>
+        <div class="sq" style="background:linear-gradient(135deg,#34d399,#059669)">化</div>
+        <div><h4>化学奖 · 2026</h4><p>Kagan、Soai：不对称合成中的非线性效应与自催化</p></div>
+        <div class="cnt">202</div>
       </div>
       <div class="prize">
-        <div class="top"><h3>生理学或医学奖</h3><span class="n">235 条</span></div>
-        <span class="tag t-purple">2026</span>
-        <div class="who">Karl Deisseroth、Peter Hegemann、Georg Nagel</div>
-        <div class="what">发现光门控离子通道并开创光遗传学</div>
+        <div class="sq" style="background:linear-gradient(135deg,#fb7185,#e11d48)">医</div>
+        <div><h4>生理学或医学奖 · 2026</h4><p>Deisseroth、Hegemann、Nagel：光门控离子通道与光遗传学</p></div>
+        <div class="cnt">235</div>
       </div>
       <div class="prize">
-        <div class="top"><h3>经济学奖</h3><span class="n">101 条</span></div>
-        <span class="tag t-amber">2026</span>
-        <div class="who">Robert E. Hall、Michael Woodford</div>
-        <div class="what">为宏观稳定政策建立微观基础</div>
+        <div class="sq" style="background:linear-gradient(135deg,#fbbf24,#d97706)">经</div>
+        <div><h4>经济学奖 · 2026</h4><p>Hall、Woodford：宏观稳定政策的微观基础</p></div>
+        <div class="cnt">101</div>
       </div>
       <div class="prize">
-        <div class="top"><h3>文学奖</h3><span class="n">123 条</span></div>
-        <span class="tag t-orange">2026</span>
-        <div class="who">Anne Carson</div>
-        <div class="what">在与古典传统的对话中为当代文学创造新形式</div>
+        <div class="sq" style="background:linear-gradient(135deg,#38bdf8,#0284c7)">文</div>
+        <div><h4>文学奖 · 2026</h4><p>Anne Carson：与古典传统对话，为当代文学创造新形式</p></div>
+        <div class="cnt">123</div>
       </div>
       <div class="prize">
-        <div class="top"><h3>和平奖</h3><span class="n">144 条</span></div>
-        <span class="tag t-cyan">2026</span>
-        <div class="who">Navi Pillay</div>
-        <div class="what">为促进和平与国际法所作的努力</div>
+        <div class="sq" style="background:linear-gradient(135deg,#94a3b8,#475569)">和</div>
+        <div><h4>和平奖 · 2026</h4><p>Navi Pillay：为促进和平与国际法所作的努力</p></div>
+        <div class="cnt">144</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="block" id="recent" style="background:#fff">
+<section style="padding-top:0">
   <div class="wrap">
-    <div class="sec-head">
-      <h2>最近三年</h2>
-      <p>2024–2026 的获奖者与贡献，完整版在全表里</p>
+    <div class="cta">
+      <h2>现在开始翻 126 年的诺贝尔奖</h2>
+      <p>搜索、筛选、按年份排序，手机上也是卡片流</p>
+      <a class="btn btn-white btn-lg" href="https://sky-blue-ai.github.io/common-website/nobel/">打开交互全表</a>
     </div>
-    <div class="recent">
-      <div class="rec">
-        <div class="yr">2026</div>
-        <h3>光遗传学、MOF 之后的又一届</h3>
-        <ul>
-          <li><b>物理学</b> Halzen：冰立方与天体物理中微子</li>
-          <li><b>化学</b> Kagan & Soai：非线性效应与自催化</li>
-          <li><b>医学</b> 光门控离子通道三人组</li>
-          <li><b>经济学</b> Hall & Woodford：宏观政策微观基础</li>
-        </ul>
-      </div>
-      <div class="rec">
-        <div class="yr">2025</div>
-        <h3>宏观量子、多孔晶体与调节性 T 细胞</h3>
-        <ul>
-          <li><b>物理学</b> Clarke、Devoret、Martinis：宏观量子隧穿</li>
-          <li><b>化学</b> 北川进、罗布森、亚吉：金属有机框架</li>
-          <li><b>医学</b> 布伦科、拉姆斯德尔、坂口志文：Treg</li>
-          <li><b>经济学</b> 莫基尔、阿吉翁、豪伊特：创新驱动增长</li>
-        </ul>
-      </div>
-      <div class="rec">
-        <div class="yr">2024</div>
-        <h3>神经网络、蛋白质设计与 microRNA</h3>
-        <ul>
-          <li><b>物理学</b> Hopfield、Hinton：人工神经网络基础</li>
-          <li><b>化学</b> Baker：计算蛋白质设计；Hassabis、Jumper：结构预测</li>
-          <li><b>医学</b> Ambros、Ruvkun：microRNA</li>
-          <li><b>经济学</b> Acemoglu、Johnson、Robinson：制度与繁荣</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta">
-  <div class="wrap">
-    <h2>现在就开始翻 126 年的诺贝尔奖</h2>
-    <p>搜索、筛选、按年份排序，手机上也能顺畅使用</p>
-    <a class="btn btn-white btn-lg" href="https://sky-blue-ai.github.io/common-website/nobel/">打开交互全表</a>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <span>数据源：NobelPrize.org 官方 API · 生成：Hermes Agent，2026-11-14</span>
+    <span>数据源：NobelPrize.org 官方 API · 风格：Dimensional Layering (#46) · 生成：Hermes Agent，2026-11-14</span>
     <a href="https://github.com/Sky-Blue-Ai/common-website" target="_blank" rel="noopener">GitHub 仓库</a>
   </div>
 </footer>
