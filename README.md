@@ -6,7 +6,8 @@
 
 ```
 /                 站点索引页（列出所有站点）
-/nobel/           诺贝尔奖全表 1901–2026
+/nobel/           诺贝尔奖全表 1901–2026（交互版）
+/nobel-landing/   诺贝尔奖数据平台落地页（Feature-Rich Showcase 风格）
 ```
 
 每个站点目录都是**自包含单页**：HTML/CSS/JS/数据全在一个 `index.html` 里，无外部依赖、无构建步骤。新增站点：新建 `<name>/index.html`，然后在根 `index.html` 的列表里加一张卡片，push 即生效。
