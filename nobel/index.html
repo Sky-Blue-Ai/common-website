@@ -94,36 +94,28 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragin
 .empty{grid-column:1/-1;text-align:center;color:var(--n500);font-size:13px;padding:44px 0}
 footer{margin:26px 0 8px;font-size:11.5px;color:var(--n500);line-height:1.75}
 footer a{color:var(--violet)}
-/* ---------- sheet ---------- */
-#sheet{position:fixed;inset:0;z-index:60;display:none}
-#sheet.show{display:block}
-#sheet .mask{position:absolute;inset:0;background:rgba(23,23,23,.42);backdrop-filter:blur(2px)}
-#sheet .panel{position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:26px 26px 0 0;
-  padding:20px 20px calc(26px + env(safe-area-inset-bottom));max-height:86vh;overflow:auto}
-#sheet .grab{width:42px;height:4px;border-radius:99px;background:var(--n200);margin:0 auto 16px}
-#sheet h2{font-size:18px;font-weight:800;line-height:1.35}
+/* ---------- sheet（居中弹窗） ---------- */
+#sheet{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:18px}
+#sheet.show{display:flex}
+#sheet .mask{position:absolute;inset:0;background:rgba(23,23,23,.5);backdrop-filter:blur(3px)}
+#sheet .panel{position:relative;width:min(430px,100%);max-height:84vh;overflow:auto;background:#fff;
+  border-radius:22px;padding:22px 22px 20px;box-shadow:0 30px 70px -20px rgba(0,0,0,.55);
+  animation:pop .18s cubic-bezier(.2,.8,.3,1)}
+@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:scale(1);opacity:1}}
+#sheet .x{position:absolute;right:12px;top:12px;width:36px;height:36px;border-radius:50%;border:0;
+  background:var(--n100);color:var(--n700);font:inherit;font-size:15px;line-height:1;cursor:pointer}
+#sheet .x:active{background:var(--n200)}
+#sheet h2{font-size:16.5px;font-weight:800;line-height:1.4;padding-right:38px}
+#sheet h2 .n-cn{display:block;font-size:14px;font-weight:600;color:var(--n600);margin-top:3px}
 #sheet .meta{font-size:12px;color:var(--n500);margin:5px 0 12px}
-#sheet .big{font-size:15.5px;line-height:1.6;margin-bottom:16px}
-#sheet dl{display:grid;grid-template-columns:60px 1fr;gap:7px 10px;font-size:13px;margin:0 0 18px}
-#sheet dt{color:var(--n500)}
+#sheet .big{font-size:15px;line-height:1.6;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--n200)}
+#sheet dl{display:grid;grid-template-columns:54px 1fr;gap:8px 10px;font-size:13px;margin:0 0 18px}
+#sheet dt{color:var(--n600)}
 #sheet dd{margin:0;font-weight:600}
 #sheet .acts{display:flex;gap:9px}
 #sheet .acts a,#sheet .acts button{flex:1;text-align:center;padding:12px;border-radius:14px;font:inherit;
   font-size:13px;font-weight:600;text-decoration:none;border:1px solid var(--n200);background:#fff;color:var(--n900);cursor:pointer}
 #sheet .acts a{background:var(--violet);border-color:var(--violet);color:#fff}
-@media(min-width:720px){
-  .bento{grid-template-columns:repeat(4,1fr);gap:14px;grid-auto-flow:row dense}
-  .b-main{grid-column:span 3;grid-row:span 2;min-height:230px;padding:28px}
-  .b-rose{grid-column:span 2}
-  .b-main h1{font-size:34px}
-  .b-amber{grid-row:1}
-  .grid{grid-template-columns:repeat(2,1fr)}
-  .tile{padding:22px}
-  .b-num b{font-size:32px}
-}
-@media(min-width:1040px){
-  .grid{grid-template-columns:repeat(3,1fr)}
-}
 </style>
 </head>
 <body>
@@ -168,20 +160,18 @@ footer a{color:var(--violet)}
 
 <div id="sheet">
   <div class="mask" onclick="closeSheet()"></div>
-  <div class="panel">
-    <div class="grab"></div>
+  <div class="panel" role="dialog" aria-modal="true">
+    <button class="x" onclick="closeSheet()" aria-label="关闭">✕</button>
     <h2 id="s-name"></h2>
     <div class="meta" id="s-meta"></div>
     <div class="big" id="s-contrib"></div>
     <dl>
-      <dt>年份</dt><dd id="s-year"></dd>
-      <dt>奖项</dt><dd id="s-cat"></dd>
       <dt>份额</dt><dd id="s-share"></dd>
       <dt>类型</dt><dd id="s-type"></dd>
+      <dt>官网页</dt><dd id="s-official">NobelPrize.org</dd>
     </dl>
     <div class="acts">
-      <a id="s-link" href="#" target="_blank" rel="noopener">诺贝尔官网该年奖项页</a>
-      <button onclick="closeSheet()">关闭</button>
+      <a id="s-link" href="#" target="_blank" rel="noopener">查看诺贝尔奖官网</a>
     </div>
   </div>
 </div>
@@ -232,17 +222,22 @@ function render(){
 
 function openSheet(i){
   const r = ROWS[i];
-  document.getElementById("s-name").textContent = r[2];
+  const nm = String(r[2]);
+  const cut = nm.indexOf("（");
+  const en = cut > 0 ? nm.slice(0, cut) : nm;
+  const cn = cut > 0 ? nm.slice(cut).replace(/[（）()]/g,"") : "";
+  document.getElementById("s-name").innerHTML = `<span class="n-en">${esc(en)}</span>` +
+    (cn ? `<span class="n-cn">${esc(cn)}</span>` : "");
   document.getElementById("s-meta").textContent = `${r[0]} 年 · ${CN[r[1]]}`;
   document.getElementById("s-contrib").textContent = r[3];
-  document.getElementById("s-year").textContent = r[0];
-  document.getElementById("s-cat").textContent = CN[r[1]];
+
   document.getElementById("s-share").textContent = r[4];
   document.getElementById("s-type").textContent = r[5];
   document.getElementById("s-link").href = `https://www.nobelprize.org/prizes/${r[6]}/${r[0]}/summary/`;
   document.getElementById("sheet").classList.add("show");
 }
 function closeSheet(){document.getElementById("sheet").classList.remove("show");}
+document.addEventListener("keydown", e=>{ if(e.key === "Escape") closeSheet(); });
 
 document.getElementById("q").addEventListener("input", e=>{ q = e.target.value; render(); });
 document.getElementById("sort").addEventListener("click", e=>{
