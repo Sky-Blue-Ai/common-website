@@ -2,410 +2,388 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#f7f2e7">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f5f5f5">
 <title>AI Agent 论文与大事件图谱 · 2021–2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%237c3aed'/%3E%3Cpath d='M9 10h14M9 16h9M9 22h12' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#f7f2e7; --card:#fffdf7; --card-2:#fbf6ec;
-  --ink:#2b2620; --ink-2:#6b6255; --ink-3:#857a67;
-  --line:#e4dac7; --line-soft:#eee5d4;
-  --accent:#b4552d; --accent-soft:#f0e2d3;
-  --green:#4f6b5d; --gold:#8a6b3f;
-  --serif:"Noto Serif SC","Songti SC",Georgia,"Times New Roman",serif;
-  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --n50:#fafafa;--n100:#f5f5f5;--n200:#e5e5e5;--n300:#d4d4d4;--n400:#a3a3a3;
+  --n500:#737373;--n600:#525252;--n700:#404040;--n900:#171717;
+  --violet:#7c3aed;--violet-l:#8b5cf6;--violet-50:#f5f3ff;
+  --amber:#fbbf24;--amber-d:#b45309;
+  --emerald:#047857;--emerald-l:#d1fae5;
+  --rose:#be123c;--rose-l:#ffe4e6;
+  --cyan:#0ea5e9;--cyan-l:#e0f2fe;--cyan-d:#0369a1;
 }
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;padding:0}
-body{
-  background:var(--paper); color:var(--ink); font-family:var(--sans);
-  font-size:15px; line-height:1.65; -webkit-font-smoothing:antialiased;
-  padding-bottom:calc(48px + env(safe-area-inset-bottom));
-}
-body::before{
-  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
-  background-image:radial-gradient(rgba(120,100,70,.055) 1px, transparent 1px);
-  background-size:4px 4px;
-}
-.wrap{position:relative; z-index:1; max-width:760px; margin:0 auto; padding:0 18px}
-header{padding:34px 0 18px; border-bottom:1px solid var(--line)}
-.kicker{
-  font-family:var(--serif); font-size:11.5px; letter-spacing:.28em; color:var(--accent);
-  text-transform:uppercase; margin-bottom:10px;
-}
-h1{
-  font-family:var(--serif); font-weight:600; font-size:27px; line-height:1.28;
-  margin:0 0 10px; letter-spacing:.01em;
-}
-.sub{color:var(--ink-2); font-size:13px; line-height:1.7; margin:0}
-.sub b{color:var(--ink); font-weight:600}
-.stats{display:flex; gap:18px; margin-top:16px; flex-wrap:wrap}
-.stat{font-size:12px; color:var(--ink-2)}
-.stat b{display:block; font-family:var(--serif); font-size:19px; color:var(--ink); font-weight:600}
-.toolbar{position:sticky; top:0; z-index:20; background:rgba(247,242,231,.94);
-  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--line); padding:12px 0 10px; margin:0 -18px; padding-left:18px; padding-right:18px}
-.search{display:flex; align-items:center; gap:9px; background:var(--card);
-  border:1px solid var(--line); border-radius:8px; padding:9px 12px}
-.search svg{flex:0 0 auto; opacity:.45}
-.search input{border:0; outline:0; background:transparent; font-size:14.5px; color:var(--ink);
-  width:100%; font-family:var(--sans)}
-.search input::placeholder{color:var(--ink-3)}
-.tabs{display:flex; gap:6px; margin-top:10px}
-.tab{
-  flex:1; text-align:center; padding:8px 4px; font-size:13.5px; border-radius:7px;
-  border:1px solid transparent; color:var(--ink-2); cursor:pointer; user-select:none;
-  background:transparent; font-family:var(--sans); transition:.15s;
-}
-.tab.on{background:var(--card); border-color:var(--line); color:var(--ink); box-shadow:inset 0 -2px 0 var(--accent), 0 1px 0 rgba(120,100,70,.05)}
-.chips{display:flex; gap:7px; flex-wrap:nowrap; overflow-x:auto; padding:10px 26px 2px 0;
-  scrollbar-width:none; -webkit-overflow-scrolling:touch;
-  -webkit-mask-image:linear-gradient(to right,#000 0,#000 calc(100% - 26px),transparent 100%);
-  mask-image:linear-gradient(to right,#000 0,#000 calc(100% - 26px),transparent 100%)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  background:var(--n100);color:var(--n900);line-height:1.55;-webkit-font-smoothing:antialiased;
+  padding-bottom:calc(28px + env(safe-area-inset-bottom))}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+.tile{background:#fff;border:1px solid var(--n200);border-radius:24px;padding:20px}
+/* hero bento */
+.hero{padding:22px 0 6px}
+.bento{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.b-main{grid-column:1/-1;background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff;border:0;
+  border-radius:26px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;min-height:200px}
+.b-main .k{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;opacity:.85;font-weight:600}
+.b-main h1{font-size:25px;line-height:1.24;font-weight:800;letter-spacing:-.02em;margin:10px 0 8px}
+.mb{display:inline}
+@media(min-width:720px){.mb{display:none}}
+.b-main p{font-size:13.5px;opacity:.94;max-width:560px}
+.b-main .go{align-self:flex-start;margin-top:16px;background:#fff;color:#6d28d9;border-radius:14px;
+  padding:11px 18px;font-size:13.5px;font-weight:700;text-decoration:none}
+.b-num{display:flex;flex-direction:column;justify-content:center;min-height:88px}
+.b-num b{font-size:30px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.b-num span{font-size:12px;color:var(--n500);margin-top:3px}
+.b-amber{background:var(--amber);border:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.b-amber b{font-size:21px;font-weight:800;color:#78350f;letter-spacing:-.01em;line-height:1.15}
+.b-amber-t{font-size:11.5px;font-weight:700;color:#78350f;letter-spacing:.02em}
+.b-amber svg{width:38px;height:38px;stroke:#78350f;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.b-emerald{background:var(--emerald);border:0;color:#fff}
+.b-emerald b{color:#fff}.b-emerald span{color:#ecfdf5;font-weight:600}
+.b-rose{background:var(--rose);border:0;color:#fff}
+.b-rose b{color:#fff}.b-rose span{color:#fff1f2;font-weight:600}
+.b-wide{grid-column:1/-1}
+/* toolbar */
+.toolbar{position:sticky;top:0;z-index:30;background:linear-gradient(var(--n100) 74%,rgba(245,245,245,0));
+  margin:0 -16px;padding:12px 16px 10px}
+.tools{background:#fff;border:1px solid var(--n200);border-radius:20px;padding:10px 12px;
+  display:flex;gap:9px;align-items:center;box-shadow:0 8px 24px -16px rgba(0,0,0,.35)}
+.search{flex:1;min-width:0;display:flex;align-items:center;gap:8px}
+.search svg{width:17px;height:17px;stroke:var(--n400);stroke-width:2.2;fill:none;flex:0 0 auto}
+.search input{flex:1;min-width:0;border:0;outline:none;background:transparent;font:inherit;font-size:14px;color:var(--n900)}
+.search input::placeholder{color:var(--n400)}
+.seg{display:flex;gap:4px;background:var(--n100);border-radius:14px;padding:4px}
+.seg button{border:0;background:transparent;color:var(--n600);font:inherit;font-size:12.5px;font-weight:700;
+  padding:7px 11px;border-radius:11px;cursor:pointer;white-space:nowrap}
+.seg button.on{background:#fff;color:var(--n900);box-shadow:0 1px 2px rgba(0,0,0,.1)}
+.chips{display:flex;gap:7px;overflow-x:auto;padding:11px 0 2px;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  mask-image:linear-gradient(to right,#000 0,#000 calc(100% - 22px),transparent 100%)}
 .chips::-webkit-scrollbar{display:none}
-.chip{
-  flex:0 0 auto; font-size:12.5px; padding:5px 11px; border-radius:20px; cursor:pointer;
-  border:1px solid var(--line); background:transparent; color:var(--ink-2); transition:.15s;
+.chip{flex:0 0 auto;border:1px solid var(--n200);background:#fff;color:var(--n700);border-radius:14px;
+  padding:8px 13px;font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap}
+.chip.on{background:var(--n900);color:#fff;border-color:var(--n900)}
+.chip.fav.on{background:var(--rose);border-color:var(--rose)}
+.chip i{font-style:normal;opacity:.55;margin-left:5px;font-size:11px}
+.count{font-size:11.5px;color:var(--n500);padding:10px 2px 4px}
+/* list */
+.grid{display:grid;grid-template-columns:1fr;gap:10px}
+.yearmark{grid-column:1/-1;display:flex;align-items:center;gap:9px;margin:20px 0 9px}
+.yearmark b{font-size:17px;font-weight:800;letter-spacing:-.01em}
+.yearmark i{flex:1;height:1px;background:var(--n200)}
+.yearmark em{font-style:normal;font-size:11px;color:var(--n400)}
+.row{background:#fff;border:1px solid var(--n200);border-radius:20px;padding:14px 16px;cursor:pointer;
+  transition:transform .16s,box-shadow .16s;border-left:4px solid var(--n200)}
+.row:active{transform:scale(.995)}
+.row:hover{box-shadow:0 10px 22px -18px rgba(0,0,0,.4)}
+.r1{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.badge{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:99px;white-space:nowrap}
+.c0{background:var(--violet-50);color:#6d28d9}.c1{background:var(--emerald-l);color:var(--emerald)}
+.c2{background:var(--rose-l);color:var(--rose)}.c3{background:#fef3c7;color:var(--amber-d)}
+.c4{background:var(--cyan-l);color:var(--cyan-d)}.c5{background:var(--n100);color:var(--n700)}
+.c6{background:#ede9fe;color:#5b21b6}.c7{background:#fee2e2;color:#991b1b}
+.c8{background:#dbeafe;color:#1d4ed8}.c9{background:#fef9c3;color:#854d0e}
+.k0{border-left-color:var(--violet-l)}.k1{border-left-color:var(--emerald)}.k2{border-left-color:var(--rose)}
+.k3{border-left-color:var(--amber)}.k4{border-left-color:var(--cyan)}.k5{border-left-color:var(--n300)}
+.k6{border-left-color:#7c3aed}.k7{border-left-color:#dc2626}.k8{border-left-color:#2563eb}.k9{border-left-color:#ca8a04}
+.imp{margin-left:auto;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:99px;white-space:nowrap;
+  border:1px solid var(--n200);color:var(--n600);background:var(--n50)}
+.imp.i0{background:var(--violet);border-color:var(--violet);color:#fff}
+.imp.i1{background:#fef3c7;border-color:#fde68a;color:var(--amber-d)}
+.imp.i2{background:var(--n100);color:var(--n700)}
+.imp.i3{background:var(--emerald-l);border-color:#a7f3d0;color:var(--emerald)}
+.name{font-size:14px;font-weight:700;line-height:1.45;word-break:break-word;padding-right:2px}
+.contrib{font-size:13px;color:var(--n600);margin-top:3px;word-break:break-word}
+.sub{display:flex;gap:10px;flex-wrap:wrap;font-size:11.5px;color:var(--n500);margin-top:7px}
+.flag{position:absolute;right:12px;bottom:10px;font-size:11px;color:var(--n500)}
+.row{position:relative}
+.pill{font-size:11px;font-weight:700;color:var(--n900);background:var(--n100);border-radius:8px;
+  padding:3px 7px;white-space:nowrap}
+.ev .name{font-size:14.5px}
+.empty{grid-column:1/-1;text-align:center;color:var(--n500);font-size:13px;padding:44px 0}
+/* stages */
+.stage{background:#fff;border:1px solid var(--n200);border-radius:24px;padding:20px;position:relative;overflow:hidden}
+.stage .n{position:absolute;right:16px;top:6px;font-size:64px;font-weight:800;color:var(--n100);line-height:1;letter-spacing:-.04em}
+.stage h3{font-size:15.5px;font-weight:800;margin:0 0 4px;padding-right:56px;line-height:1.4}
+.stage .t{font-size:11.5px;font-weight:700;color:var(--violet);margin-bottom:8px}
+.stage p{font-size:13px;color:var(--n600);line-height:1.65}
+.stage .rep{font-size:11.5px;color:var(--n500);border-top:1px solid var(--n200);margin-top:10px;padding-top:9px;line-height:1.6}
+footer{margin:26px 0 8px;font-size:11.5px;color:var(--n500);line-height:1.75}
+footer a{color:var(--violet)}
+/* sheet */
+#sheet{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:18px}
+#sheet.show{display:flex}
+#sheet .mask{position:absolute;inset:0;background:rgba(23,23,23,.5);backdrop-filter:blur(3px)}
+#sheet .panel{position:relative;width:min(440px,100%);max-height:86vh;overflow:auto;background:#fff;
+  border-radius:22px;padding:22px 22px 20px;box-shadow:0 30px 70px -20px rgba(0,0,0,.55);
+  animation:pop .18s cubic-bezier(.2,.8,.3,1)}
+@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:scale(1);opacity:1}}
+#sheet .x{position:absolute;right:12px;top:12px;width:36px;height:36px;border-radius:50%;border:0;
+  background:var(--n100);color:var(--n700);font:inherit;font-size:15px;line-height:1;cursor:pointer}
+#sheet h2{font-size:16.5px;font-weight:800;line-height:1.4;padding-right:38px}
+#sheet .meta{font-size:12px;color:var(--n500);margin:6px 0 12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+#sheet .big{font-size:14.5px;line-height:1.7;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--n200);color:var(--n700)}
+#sheet dl{display:grid;grid-template-columns:56px 1fr;gap:8px 10px;font-size:13px;margin:0 0 16px}
+#sheet dt{color:var(--n600)}
+#sheet dd{margin:0;font-weight:600;word-break:break-word}
+#sheet dd a{color:var(--violet);text-decoration:none;font-weight:600}
+#sheet .acts{display:flex;gap:9px;margin-bottom:12px}
+#sheet .acts a,#sheet .acts button{flex:1;text-align:center;padding:11px;border-radius:14px;font:inherit;
+  font-size:13px;font-weight:700;text-decoration:none;border:1px solid var(--n200);background:#fff;color:var(--n900);cursor:pointer}
+#sheet .acts a{background:var(--violet);border-color:var(--violet);color:#fff}
+#sheet .acts button.on{background:var(--n900);border-color:var(--n900);color:#fff}
+#sheet .note label{font-size:11.5px;color:var(--n500);display:block;margin-bottom:5px}
+#sheet .note textarea{width:100%;min-height:70px;resize:vertical;border:1px solid var(--n200);border-radius:12px;
+  padding:10px;font:inherit;font-size:13px;line-height:1.6;outline:none;color:var(--n900)}
+#sheet .note textarea:focus{border-color:var(--violet-l)}
+@media(min-width:720px){
+  .bento{grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(92px,1fr)}
+  .b-main{grid-column:span 2;grid-row:span 2}
+  .b-num{min-height:0}
+  .b-wide{grid-column:1/-1;flex-direction:row;justify-content:flex-start;gap:14px;padding:14px 20px}
+  .b-wide svg{width:26px;height:26px}
+  .b-wide b{font-size:19px}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .b-main h1{font-size:30px}
 }
-.chip.on{background:var(--ink); border-color:var(--ink); color:#fbf6ec}
-.chip.fav.on{background:var(--accent); border-color:var(--accent); color:#fff8f0}
-main{padding-top:6px; min-height:50vh}
-.yearmark{
-  display:flex; align-items:center; gap:12px; margin:26px 0 12px;
-  font-family:var(--serif); font-size:15px; color:var(--ink-2); letter-spacing:.06em;
+@media(min-width:1040px){
+  .grid{grid-template-columns:repeat(3,1fr)}
 }
-.yearmark::after{content:""; flex:1; height:1px; background:var(--line)}
-.card{
-  background:var(--card); border:1px solid var(--line); border-radius:9px;
-  padding:14px 15px; margin-bottom:10px; cursor:pointer; position:relative;
-  transition:.16s; box-shadow:0 1px 1px rgba(120,100,70,.03);
-}
-.card:active{transform:scale(.995); background:var(--card-2)}
-.card .row1{display:flex; align-items:flex-start; gap:8px}
-.card h3{
-  font-family:var(--serif); font-size:15.5px; font-weight:600; margin:0; line-height:1.45; flex:1;
-}
-.badge{
-  flex:0 0 auto; font-size:10.5px; padding:2px 7px; border-radius:4px; letter-spacing:.04em;
-  border:1px solid var(--line); color:var(--ink-2); background:var(--card-2); white-space:nowrap;
-}
-.badge.奠基{background:var(--accent); border-color:var(--accent); color:#fff8f0}
-.badge.高影响{border-color:#d9c3a3; color:var(--gold); background:#faf1e2}
-.badge.前沿{border-color:#cbd6cc; color:var(--green); background:#eef2ec}
-.meta{display:flex; gap:10px; flex-wrap:wrap; font-size:12px; color:var(--ink-3); margin-top:6px}
-.meta span{white-space:nowrap}
-.contribution{font-size:13.5px; color:var(--ink-2); margin-top:8px; line-height:1.6}
-.flags{position:absolute; top:10px; right:10px; display:flex; gap:4px}
-.flag{font-size:11px; opacity:.9}
-.ev{display:flex; gap:12px; padding:13px 0; border-bottom:1px dashed var(--line-soft); cursor:pointer}
-.ev:last-child{border-bottom:0}
-.evdate{flex:0 0 62px; font-family:var(--serif); font-size:12px; color:var(--accent); padding-top:2px; letter-spacing:.02em}
-.evbody{flex:1}
-.evtitle{font-family:var(--serif); font-size:15px; font-weight:600; line-height:1.45; margin:0}
-.evmeta{font-size:12px; color:var(--ink-2); margin-top:4px}
-.evdesc{font-size:13px; color:var(--ink-2); margin-top:4px; line-height:1.6}
-.cat{display:inline-block; font-size:10.5px; padding:1px 6px; border-radius:3px; margin-right:6px;
-  border:1px solid var(--line); color:var(--ink-2)}
-.cat.模型发布{color:#8a6b3f;border-color:#e0cbaa;background:#faf2e4}
-.cat.Agent产品{color:#a14a2a;border-color:#e8c9b8;background:#fbeee6}
-.cat.协议标准{color:#4f6b5d;border-color:#c9d6ca;background:#eef2ec}
-.cat.融资并购{color:#7a5a8a;border-color:#ddcfe4;background:#f4eef7}
-.cat.政策监管{color:#5a6b7a;border-color:#ccd6de;background:#eef2f6}
-.cat.算力硬件{color:#8a6b3f;border-color:#e0cbaa;background:#faf2e4}
-.cat.学术荣誉{color:#8a6b3f;border-color:#e0cbaa;background:#faf2e4}
-.cat.安全与风险{color:#9a4a4a;border-color:#e6cccc;background:#faeeee}
-.stage{
-  background:var(--card); border:1px solid var(--line); border-radius:9px;
-  padding:16px; margin-bottom:12px; position:relative;
-}
-.stage .idx{
-  position:absolute; right:14px; top:12px; font-family:var(--serif); font-size:34px;
-  color:var(--accent-soft); line-height:1; font-weight:600;
-}
-.stage h3{font-family:var(--serif); font-size:16px; margin:0 0 4px; font-weight:600; padding-right:58px}
-.stage .tm{font-size:12px; color:var(--accent); margin-bottom:8px}
-.stage p{margin:0 0 8px; font-size:13.5px; color:var(--ink-2); line-height:1.65}
-.stage .rep{font-size:12.5px; color:var(--ink-3); border-top:1px dashed var(--line-soft); padding-top:8px}
-.empty{text-align:center; color:var(--ink-3); padding:56px 0; font-size:13.5px}
-/* modal */
-.mask{position:fixed; inset:0; background:rgba(43,38,32,.34); backdrop-filter:blur(2px); z-index:60;
-  display:none; align-items:flex-end; justify-content:center}
-.mask.on{display:flex}
-.sheet{
-  background:var(--paper); width:100%; max-width:760px; max-height:88vh; overflow-y:auto;
-  border-radius:16px 16px 0 0; padding:20px 20px calc(26px + env(safe-area-inset-bottom));
-  box-shadow:0 -8px 34px rgba(60,45,25,.16); animation:up .22s ease-out;
-}
-@keyframes up{from{transform:translateY(26px);opacity:.6}to{transform:none;opacity:1}}
-.sheet .close{position:sticky; top:0; float:right; background:var(--card); border:1px solid var(--line);
-  width:30px; height:30px; border-radius:50%; color:var(--ink-2); font-size:15px; cursor:pointer; line-height:1}
-.sheet h2{font-family:var(--serif); font-size:19px; line-height:1.42; margin:2px 36px 8px 0; font-weight:600}
-.sheet .kv{display:flex; gap:8px; font-size:13px; color:var(--ink-2); margin-bottom:6px}
-.sheet .kv b{color:var(--ink-3); font-weight:400; flex:0 0 44px}
-.sheet .body{font-size:14px; color:var(--ink-2); line-height:1.75; margin:12px 0; padding:12px 0;
-  border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
-.sheet a{color:var(--accent); text-decoration:none; border-bottom:1px solid #e0c3b0; word-break:break-all; font-size:13px}
-.acts{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px}
-.btn{font-family:var(--sans); font-size:13px; padding:8px 13px; border-radius:7px;
-  border:1px solid var(--line); background:var(--card); color:var(--ink); cursor:pointer}
-.btn.on{background:var(--accent); border-color:var(--accent); color:#fff8f0}
-.note{margin-top:14px}
-.note label{font-size:12px; color:var(--ink-3); display:block; margin-bottom:5px}
-.note textarea{width:100%; min-height:76px; resize:vertical; background:var(--card);
-  border:1px solid var(--line); border-radius:7px; padding:10px; font-family:var(--sans);
-  font-size:13.5px; color:var(--ink); line-height:1.6; outline:0}
-.note textarea:focus{border-color:#d3c1a4}
-footer{max-width:760px; margin:34px auto 0; padding:16px 18px 0; border-top:1px solid var(--line);
-  font-size:11.5px; color:var(--ink-3); line-height:1.8}
-.footacts{display:flex; gap:8px; margin-top:8px; flex-wrap:wrap}
-.mini{font-size:11.5px; padding:5px 9px; border-radius:5px; border:1px solid var(--line);
-  background:transparent; color:var(--ink-2); cursor:pointer; font-family:var(--sans)}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header>
-    <div class="kicker">AI AGENT ATLAS · 2021—2026</div>
-    <h1>AI Agent 论文与大事件图谱</h1>
-    <p class="sub">从 ReAct 到通用工作 Agent：<b>64 篇主流论文</b>、<b>56 个大事件</b>，按时间与方向整理。点开卡片看要点，可标记已读与收藏。</p>
-    <div class="stats">
-      <div class="stat"><b id="s1">64</b>论文</div>
-      <div class="stat"><b id="s2">56</b>事件</div>
-      <div class="stat"><b id="s3">0</b>已读</div>
-      <div class="stat"><b id="s4">0</b>收藏</div>
+  <header class="hero">
+    <div class="bento">
+      <div class="b-main">
+        <div>
+          <div class="k">AI AGENT ATLAS · 2021—2026</div>
+          <h1>AI Agent 论文<br class="mb">与大事件图谱</h1>
+          <p>从 ReAct 到通用工作 Agent：64 篇主流论文、56 个大事件、六阶段脉络。搜索、按方向筛选、点开看要点，可标记已读与收藏。</p>
+        </div>
+        <a class="go" href="#list" onclick="document.getElementById('q').focus()">开始浏览 →</a>
+      </div>
+      <div class="tile b-num"><b id="s-total">64</b><span>篇主流论文</span></div>
+      <div class="tile b-num"><b>56</b><span>个大事件</span></div>
+      <div class="tile b-num"><b id="s-read">0</b><span>已读</span></div>
+      <div class="tile b-num"><b id="s-fav">0</b><span>收藏</span></div>
+      <div class="tile b-amber b-wide">
+        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 11h18"/></svg>
+        <b>2021–2026</b>
+        <span class="b-amber-t">六阶段脉络</span>
+      </div>
     </div>
   </header>
 
   <div class="toolbar">
-    <div class="search">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-      <input id="q" type="search" placeholder="搜论文、机构、事件关键词…" autocomplete="off">
-    </div>
-    <div class="tabs">
-      <button class="tab on" data-view="papers">论文</button>
-      <button class="tab" data-view="events">大事件</button>
-      <button class="tab" data-view="stages">脉络</button>
+    <div class="tools">
+      <label class="search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.3-4.3"/></svg>
+        <input id="q" type="search" placeholder="搜论文、机构、事件关键词…" autocomplete="off">
+      </label>
+      <div class="seg">
+        <button class="on" data-view="papers">论文</button>
+        <button data-view="events">事件</button>
+        <button data-view="stages">脉络</button>
+      </div>
     </div>
     <div class="chips" id="chips"></div>
   </div>
 
-  <main id="main"></main>
+  <div class="count" id="count"></div>
+  <main id="list" class="grid"></main>
+
+  <footer>
+    数据整理自 arXiv 原论文与官方发布、主流媒体报道（2026-11-14）。影响力标签为编辑判断。<br>
+    <a href="https://my.feishu.cn/base/HGLabeiTfaFIqTsA1OYchLOgnbd" target="_blank" rel="noopener">飞书多维表格源数据</a> ·
+    <a href="../">站点目录</a>
+  </footer>
 </div>
 
-<footer>
-  数据整理自 arXiv 原论文与官方发布、主流媒体报道（2026-11-14 更新）。论文引用数未标注，影响力为编辑判断。
-  <div class="footacts">
-    <button class="mini" id="exp">导出我的标记</button>
-    <button class="mini" id="imp">导入</button>
-    <button class="mini" id="clr">清空标记</button>
-    <input type="file" id="file" accept="application/json" hidden>
+<div id="sheet">
+  <div class="mask" onclick="closeSheet()"></div>
+  <div class="panel" role="dialog" aria-modal="true">
+    <button class="x" onclick="closeSheet()" aria-label="关闭">✕</button>
+    <h2 id="s-name"></h2>
+    <div class="meta" id="s-meta"></div>
+    <div class="big" id="s-body"></div>
+    <dl id="s-dl"></dl>
+    <div class="acts">
+      <button id="s-btn-read">标记已读</button>
+      <button id="s-btn-fav">收藏</button>
+      <a id="s-link" href="#" target="_blank" rel="noopener">查看原文</a>
+    </div>
+    <div class="note">
+      <label>我的笔记（存在本机浏览器）</label>
+      <textarea id="s-note" placeholder="记一句这条能用在哪儿…"></textarea>
+    </div>
   </div>
-</footer>
-
-<div class="mask" id="mask"><div class="sheet" id="sheet"></div></div>
+</div>
 
 <script>
-const DATA = {"papers":[{"title":"WebGPT：浏览器辅助问答 + 人类反馈","date":"2021-12","org":"OpenAI","direction":"工具使用","contribution":"让模型自己开浏览器检索后再作答，是浏览器 Agent 的最早雏形","arxiv":"2112.09332","impact":"奠基"},{"title":"Chain-of-Thought 思维链提示","date":"2022-01","org":"Google","direction":"基础方法","contribution":"显式写出推理步骤显著提升复杂任务表现，Agent 推理能力的底座","arxiv":"2201.11903","impact":"奠基"},{"title":"SayCan：把语言指令落到机器人技能上","date":"2022-04","org":"Google","direction":"具身智能","contribution":"用 LLM 给可执行技能打分，实现语言到真实动作的接地","arxiv":"2204.01691","impact":"奠基"},{"title":"Inner Monologue：带环境反馈的自我对话","date":"2022-07","org":"Google","direction":"具身智能","contribution":"把环境/人类反馈写回提示，形成闭环规划","arxiv":"2207.05608","impact":"高影响"},{"title":"ReAct：推理与行动交替","date":"2022-10","org":"Princeton / Google","direction":"基础方法","contribution":"Thought→Action→Observation 循环，成为几乎所有 Agent 的事实标准范式","arxiv":"2210.03629","impact":"奠基"},{"title":"Toolformer：模型自学用工具","date":"2023-02","org":"Meta AI","direction":"工具使用","contribution":"自监督学习何时调用哪个 API，开启工具调用研究线","arxiv":"2302.04761","impact":"奠基"},{"title":"Reflexion：语言化反思替代梯度更新","date":"2023-03","org":"Northeastern / MIT","direction":"记忆与反思","contribution":"把失败经验写成反思存进记忆，实现无训练的自我改进","arxiv":"2303.11366","impact":"奠基"},{"title":"HuggingGPT：LLM 当模型调度器","date":"2023-03","org":"浙大 / 微软","direction":"多智能体","contribution":"LLM 负责规划并调度 HuggingFace 上的专用模型","arxiv":"2303.17580","impact":"高影响"},{"title":"Generative Agents：生成式智能体社会","date":"2023-04","org":"Stanford / Google","direction":"多智能体","contribution":"记忆—反思—计划三段式架构，25 个智能体小镇模拟","arxiv":"2304.03442","impact":"奠基"},{"title":"Tree of Thoughts：树搜索式推理","date":"2023-05","org":"Princeton / DeepMind","direction":"基础方法","contribution":"用思维树 + 回溯替代线性推理，为搜索型 Agent 铺路","arxiv":"2305.10601","impact":"奠基"},{"title":"Gorilla：大规模 API 调用","date":"2023-05","org":"UC Berkeley","direction":"工具使用","contribution":"检索感知训练 + AST 校验，大幅提升真实 API 调用准确率","arxiv":"2305.15334","impact":"高影响"},{"title":"ReWOO：推理与观测解耦","date":"2023-05","org":"密歇根大学 / 微软","direction":"规划","contribution":"先规划完整工具链再执行，显著省 token、降延迟","arxiv":"2305.18323","impact":"主流"},{"title":"Voyager：终身学习的具身智能体","date":"2023-05","org":"NVIDIA / Caltech","direction":"具身智能","contribution":"自动课程 + 技能库 + 自我验证，Minecraft 里持续进化","arxiv":"2305.16291","impact":"奠基"},{"title":"Mind2Web：通用网页 Agent 数据集","date":"2023-06","org":"俄亥俄州立大学","direction":"评测基准","contribution":"首个跨网站、真实任务的通用 Web Agent 基准","arxiv":"2306.06070","impact":"高影响"},{"title":"ChatDev：对话式软件开发","date":"2023-07","org":"清华 / OpenBMB","direction":"多智能体","contribution":"CEO/CTO/程序员等角色分工，用自然语言对话走完开发流程","arxiv":"2307.07924","impact":"高影响"},{"title":"WebArena：可复现的真实 Web 环境","date":"2023-07","org":"CMU","direction":"评测基准","contribution":"自建四个真实站点，端到端评测 Web Agent","arxiv":"2307.13854","impact":"奠基"},{"title":"ToolLLM / ToolBench：1.6 万真实 API","date":"2023-07","org":"清华 / OpenBMB","direction":"工具使用","contribution":"构造大规模 API 指令数据 + DFSDT 决策树搜索","arxiv":"2307.16789","impact":"高影响"},{"title":"MetaGPT：把 SOP 写进多智能体","date":"2023-08","org":"深大 / 微软亚洲研究院","direction":"多智能体","contribution":"用标准作业流程约束角色协作，输出可执行产物","arxiv":"2308.00352","impact":"高影响"},{"title":"AgentBench：8 环境跨域评测","date":"2023-08","org":"清华 THUDM","direction":"评测基准","contribution":"首次系统比较主流 LLM 作为 Agent 的能力边界","arxiv":"2308.03688","impact":"奠基"},{"title":"AutoGen：多智能体对话框架","date":"2023-08","org":"微软","direction":"框架与工程","contribution":"可编程的多智能体对话编排，工程界广泛采用","arxiv":"2308.08155","impact":"高影响"},{"title":"CoALA：语言智能体的认知架构","date":"2023-09","org":"Princeton","direction":"架构与综述","contribution":"用记忆分类 + 动作空间统一描述语言 Agent，被后续论文反复引用","arxiv":"2309.02427","impact":"奠基"},{"title":"大语言模型智能体综述（人大 Rise and Potential）","date":"2023-09","org":"中国人民大学","direction":"综述","contribution":"中文社区引用最广的 Agent 综述，梳理脑—感知—行动框架","arxiv":"2309.07864","impact":"高影响"},{"title":"LLM 自主智能体统一框架综述","date":"2023-08","org":"中国人民大学","direction":"综述","contribution":"提出 profile—memory—planning—action 统一框架","arxiv":"2308.11432","impact":"高影响"},{"title":"FireAct：轨迹微调","date":"2023-10","org":"Google / UIUC","direction":"训练与 RL","contribution":"证明少量成功轨迹微调即可显著提升 Agent 表现","arxiv":"2310.05915","impact":"主流"},{"title":"AgentTuning：AgentInstruct 指令微调","date":"2023-10","org":"清华 / 智谱","direction":"训练与 RL","contribution":"构建 Agent 指令数据，兼顾 Agent 能力与通用能力","arxiv":"2310.12823","impact":"主流"},{"title":"SWE-bench：真实 GitHub Issue 修复","date":"2023-10","org":"Princeton","direction":"评测基准","contribution":"软件工程 Agent 的分水岭基准，后续衍生 Verified / Pro","arxiv":"2310.06770","impact":"奠基"},{"title":"GAIA：通用 AI 助手基准","date":"2023-11","org":"Meta / HuggingFace 等","direction":"评测基准","contribution":"对人类简单、对模型极难的真实问题集合","arxiv":"2311.12983","impact":"奠基"},{"title":"WebVoyager：端到端多模态 Web Agent","date":"2024-01","org":"腾讯 / 多校","direction":"工具使用","contribution":"只看截图就能操作真实网站，并给出评测方法","arxiv":"2401.13919","impact":"高影响"},{"title":"CodeAct：以代码为动作空间","date":"2024-02","org":"UIUC / 清华等","direction":"基础方法","contribution":"把动作统一成可执行 Python，代码即行动，成为主流 Agent 内核","arxiv":"2402.01030","impact":"奠基"},{"title":"WebLINX：多轮对话式网页导航","date":"2024-02","org":"蒙特利尔大学 / Mila","direction":"评测基准","contribution":"真实网站上的多轮对话导航数据与模型","arxiv":"2402.05930","impact":"主流"},{"title":"AgentScope：多智能体开发平台","date":"2024-02","org":"阿里巴巴","direction":"框架与工程","contribution":"面向消息传递的多智能体编程框架与工具链","arxiv":"2402.14034","impact":"主流"},{"title":"OSWorld：真实操作系统电脑操作","date":"2024-04","org":"港大 XLANG / CMU 等","direction":"评测基准","contribution":"在真实 OS 里完成开放式任务，computer-use 主基准","arxiv":"2404.07972","impact":"奠基"},{"title":"SWE-agent：智能体—计算机接口（ACI）","date":"2024-05","org":"Princeton","direction":"软件工程","contribution":"设计 ACI 让模型高效读改代码，开源即被广泛使用","arxiv":"2405.15793","impact":"奠基"},{"title":"τ-bench：工具—智能体—用户交互","date":"2024-06","org":"Sierra","direction":"评测基准","contribution":"引入 pass^k 度量真实客服场景的稳定性，强调可靠性","arxiv":"2406.12045","impact":"高影响"},{"title":"Agentless：反证复杂 Agent 必要性的三层流水线","date":"2024-07","org":"UIUC","direction":"软件工程","contribution":"固定流程的简单方案在 SWE-bench 上击败复杂 Agent","arxiv":"2407.01489","impact":"高影响"},{"title":"OpenHands：开源软件开发 Agent 平台","date":"2024-07","org":"CMU / UIUC / All Hands AI","direction":"框架与工程","contribution":"可复现的开源 SWE Agent 平台与基准环境","arxiv":"2407.16741","impact":"高影响"},{"title":"AppWorld：可交互应用世界","date":"2024-07","org":"AWS / 石溪大学","direction":"评测基准","contribution":"模拟多 App 生态，评测交互式编码 Agent","arxiv":"2407.18901","impact":"主流"},{"title":"Agent-as-a-Judge：用 Agent 评 Agent","date":"2024-10","org":"上海 AI Lab / 牛津","direction":"评测基准","contribution":"提出 DevAI 数据集与过程级评审，替代单次 LLM 打分","arxiv":"2410.10934","impact":"高影响"},{"title":"Magentic-One：通用多智能体系统","date":"2024-11","org":"微软研究院","direction":"多智能体","contribution":"编排者 + 专项 Agent 的通用任务系统，WebArena 等表现领先","arxiv":"2411.04468","impact":"高影响"},{"title":"TheAgentCompany：公司级长程任务","date":"2024-12","org":"CMU","direction":"评测基准","contribution":"模拟真实软件公司，测长周期、跨工具协作任务","arxiv":"2412.14161","impact":"高影响"},{"title":"DeepSeek-R1：纯强化学习激发推理","date":"2025-01","org":"DeepSeek","direction":"训练与 RL","contribution":"开源推理模型与 RL 训练路线，直接引爆 Agentic RL 研究","arxiv":"2501.12948","impact":"奠基"},{"title":"Agent Laboratory：LLM 当科研助理","date":"2025-01","org":"约翰霍普金斯大学","direction":"应用","contribution":"从文献到实验到报告的端到端科研 Agent","arxiv":"2501.04227","impact":"主流"},{"title":"UI-TARS：原生 GUI Agent 模型","date":"2025-01","org":"字节跳动 Seed","direction":"具身与 GUI","contribution":"把截图—动作直接训进模型，GUI Agent 代表作","arxiv":"2501.12326","impact":"高影响"},{"title":"Agent 评测综述（Survey on Evaluation of LLM-based Agents）","date":"2025-03","org":"IBM Research / Technion","direction":"综述","contribution":"系统梳理 Agent 评测的维度、基准与缺口","arxiv":"2503.16416","impact":"主流"},{"title":"Agent 协议综述（Survey of AI Agent Protocols）","date":"2025-04","org":"中国人民大学等","direction":"协议与综述","contribution":"把 MCP / A2A / ANP 等协议做成统一分类","arxiv":"2504.16736","impact":"主流"},{"title":"BrowseComp：硬核浏览检索基准","date":"2025-04","org":"OpenAI","direction":"评测基准","contribution":"专门刁难浏览 Agent 的短答案检索题，推动 Deep Research","arxiv":"2504.12516","impact":"高影响"},{"title":"SWE-smith：合成软件工程训练数据","date":"2025-04","org":"斯坦福 / UIUC","direction":"训练与 RL","contribution":"规模化合成 bug 与修复轨迹，缓解 SWE 训练数据荒","arxiv":"2504.21798","impact":"主流"},{"title":"WebDancer：信息检索 Agent 端到端训练","date":"2025-05","org":"阿里巴巴","direction":"训练与 RL","contribution":"用轨迹合成 + 训练把浏览检索 Agent 做成可训练系统","arxiv":"2505.22648","impact":"主流"},{"title":"OAgents：Agent 设计的复现实证","date":"2025-06","org":"人大 / 上海 AI Lab 等","direction":"实证研究","contribution":"在 GAIA / BrowseComp 上严格消融，指出多数 Agent 设计缺乏可比性","arxiv":"2506.15741","impact":"主流"},{"title":"Deep Research Agents：系统路线图","date":"2025-06","org":"NUS 等","direction":"综述","contribution":"把深度研究 Agent 拆成规划、检索、工具、报告四层","arxiv":"2506.18096","impact":"主流"},{"title":"WebSailor：超人类网页推理","date":"2025-07","org":"阿里巴巴","direction":"训练与 RL","contribution":"高难度浏览任务的数据合成与训练，开源深度研究 Agent","arxiv":"2507.02592","impact":"前沿"},{"title":"上下文工程综述","date":"2025-07","org":"多机构合作","direction":"记忆与上下文","contribution":"把提示工程升级为上下文工程：写入、管理、压缩、隔离","arxiv":"2507.13334","impact":"高影响"},{"title":"自我进化 Agent 综述","date":"2025-07","org":"复旦大学等","direction":"综述","contribution":"回答在哪一层、用什么信号、如何自进化","arxiv":"2507.21046","impact":"主流"},{"title":"ComputerRL：端到端在线 RL 训练电脑操作","date":"2025-08","org":"阿里巴巴 / 清华","direction":"训练与 RL","contribution":"把在线 RL 扩展到真实桌面环境，OSWorld 显著提升","arxiv":"2508.14040","impact":"前沿"},{"title":"Agentic RL 全景综述","date":"2025-09","org":"上海 AI Lab / 清华等","direction":"综述","contribution":"系统整理 Agentic 强化学习的数据、奖励、环境与训练范式","arxiv":"2509.02547","impact":"高影响"},{"title":"GDPval：真实经济价值任务评测","date":"2025-10","org":"OpenAI","direction":"评测基准","contribution":"用 44 个职业的真实交付物衡量模型的实际经济价值","arxiv":"2510.04374","impact":"高影响"},{"title":"Agentic AI 架构与应用综述","date":"2025-10","org":"多校合作","direction":"综述","contribution":"从架构、应用到治理的全景梳理","arxiv":"2510.25445","impact":"主流"},{"title":"Agent-as-a-Judge 综述","date":"2026-01","org":"哈工大（深圳）等","direction":"综述","contribution":"从 LLM-as-Judge 走向可规划、可验证的 Agent 评审","arxiv":"2601.05111","impact":"前沿"},{"title":"Terminal-Bench 2.0：终端长任务基准","date":"2026-01","org":"Stanford / Laude Institute","direction":"评测基准","contribution":"89 个真实终端任务，前沿模型得分不足 65%，成为长程能力新标尺","arxiv":"2601.11868","impact":"前沿"},{"title":"Agentic Tool Use 综述","date":"2026-04","org":"多校合作","direction":"工具使用","contribution":"把工具使用分成提示、监督学习、奖励驱动三条范式","arxiv":"2604.00835","impact":"前沿"},{"title":"反思 Agentic RL","date":"2026-04","org":"多机构合作","direction":"训练与 RL","contribution":"讨论 Agentic RL 与传统 RL 的边界与训练稳定性问题","arxiv":"2604.27859","impact":"前沿"},{"title":"Agent 记忆机制演化综述","date":"2026-05","org":"多校合作","direction":"记忆与上下文","contribution":"从“存储”走向“经验”，给出记忆机制演化框架","arxiv":"2605.06716","impact":"前沿"},{"title":"自进化 Agentic RL 系统","date":"2026-07","org":"多机构合作","direction":"训练与 RL","contribution":"让权重、提示、工具、harness 在部署后持续自进化","arxiv":"2607.01120","impact":"前沿"},{"title":"SWE-Bench Pro V2：更抗污染的编码基准","date":"2026-10","org":"Scale AI 等","direction":"评测基准","contribution":"公开集大修 480/731 题，应对数据污染与过拟合","arxiv":"2610.24206","impact":"前沿"}],"events":[{"date":"2022-11-30","title":"ChatGPT 发布","who":"OpenAI","cat":"Agent 产品","desc":"两个月破亿用户，AI 从实验室走向大众，也为后续 Agent 产品化铺路","src":"https://openai.com/index/chatgpt/"},{"date":"2023-03-14","title":"GPT-4 发布","who":"OpenAI","cat":"模型发布","desc":"多模态 + 考试级能力，成为大量 Agent 的推理内核","src":"https://openai.com/index/gpt-4-research/"},{"date":"2023-03-23","title":"ChatGPT Plugins 上线","who":"OpenAI","cat":"协议标准","desc":"第三方工具接入 LLM 的首个大规模形态，工具生态开端","src":"https://openai.com/index/chatgpt-plugins/"},{"date":"2023-03-30","title":"AutoGPT 开源爆火","who":"Significant Gravitas","cat":"Agent 产品","desc":"第一个大众级自主 Agent 项目，GitHub 星标暴涨，引发“自主 Agent”热潮","src":"https://github.com/Significant-Gravitas/AutoGPT"},{"date":"2023-07-18","title":"Llama 2 开放商用","who":"Meta","cat":"模型发布","desc":"开源权重可商用，Agent 生态的开源底座","src":"https://ai.meta.com/llama/"},{"date":"2023-11-06","title":"OpenAI 首届 DevDay","who":"OpenAI","cat":"Agent 产品","desc":"GPT-4 Turbo、Assistants API、GPTs 三连发，Agent 开发进入平台期","src":"https://openai.com/index/new-models-and-developer-products-announced-at-devday/"},{"date":"2023-12-08","title":"欧盟 AI Act 达成政治协议","who":"欧盟","cat":"政策监管","desc":"全球首部综合性 AI 法案，确立风险分级监管框架","src":"https://www.europarl.europa.eu/news/en/press-room/20231206IPR15699/"},{"date":"2024-02-15","title":"Sora 发布","who":"OpenAI","cat":"模型发布","desc":"视频生成走向世界模型叙事，多模态 Agent 的环境理解被重估","src":"https://openai.com/index/sora/"},{"date":"2024-03-04","title":"Claude 3 系列发布","who":"Anthropic","cat":"模型发布","desc":"Opus 登顶多项基准，长上下文与工具调用能力成为卖点","src":"https://www.anthropic.com/news/claude-3-family"},{"date":"2024-04-18","title":"Llama 3 发布","who":"Meta","cat":"模型发布","desc":"8B/70B 开源，社区 Agent 微调的主要底座","src":"https://ai.meta.com/blog/meta-llama-3/"},{"date":"2024-05-13","title":"GPT-4o 发布","who":"OpenAI","cat":"模型发布","desc":"原生全模态、低延迟语音，为实时语音 Agent 打开空间","src":"https://openai.com/index/hello-gpt-4o/"},{"date":"2024-06-20","title":"Claude 3.5 Sonnet + Artifacts","who":"Anthropic","cat":"模型发布","desc":"编码与 agentic 任务大幅提升，Artifacts 让模型输出变成可交互产物","src":"https://www.anthropic.com/news/claude-3-5-sonnet"},{"date":"2024-09-12","title":"OpenAI o1-preview 发布","who":"OpenAI","cat":"模型发布","desc":"推理模型（RL + 长思维链）范式确立，Agent 的规划能力跃升","src":"https://openai.com/index/introducing-openai-o1-preview/"},{"date":"2024-10-09","title":"诺贝尔物理学奖/化学奖颁给 AI 学者","who":"诺贝尔奖委员会","cat":"学术荣誉","desc":"Hinton、Hopfield 与 Hassabis、Jumper 获奖，AI 进入主流科学叙事","src":"https://www.nobelprize.org/prizes/physics/2024/summary/"},{"date":"2024-10-22","title":"Anthropic 发布 Computer Use","who":"Anthropic","cat":"Agent 产品","desc":"首个主流 computer-use 能力：模型直接看屏幕、动鼠标键盘","src":"https://www.anthropic.com/news/3-5-models-and-computer-use"},{"date":"2024-12-11","title":"Gemini 2.0 Flash 发布","who":"Google DeepMind","cat":"模型发布","desc":"官方口径“为 Agent 时代打造”，原生工具调用与多模态输出","src":"https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/"},{"date":"2024-12-20","title":"OpenAI o3 预告，ARC-AGI 大幅突破","who":"OpenAI","cat":"模型发布","desc":"推理模型在抽象推理基准上越过人类门槛，引发算力与安全讨论","src":"https://openai.com/12-days/"},{"date":"2024-12-26","title":"DeepSeek-V3 开源","who":"DeepSeek","cat":"模型发布","desc":"低成本训练出前沿水平 MoE 模型，改变算力叙事","src":"https://github.com/deepseek-ai/DeepSeek-V3"},{"date":"2025-01-20","title":"DeepSeek-R1 开源","who":"DeepSeek","cat":"模型发布","desc":"纯 RL 推理模型开源，英伟达单日市值蒸发约 6000 亿美元","src":"https://api-docs.deepseek.com/news/news250120"},{"date":"2025-01-21","title":"Stargate 计划宣布","who":"OpenAI / 软银 / 甲骨文","cat":"算力硬件","desc":"四年 5000 亿美元 AI 基建，算力成为国家级议题","src":"https://openai.com/index/announcing-the-stargate-project/"},{"date":"2025-01-23","title":"OpenAI Operator 上线","who":"OpenAI","cat":"Agent 产品","desc":"浏览器 computer-use Agent 产品化，CUA 模型对外","src":"https://openai.com/index/introducing-operator/"},{"date":"2025-02-02","title":"OpenAI Deep Research 上线","who":"OpenAI","cat":"Agent 产品","desc":"把多步研究任务变成可委托产品，“深度研究”品类成立","src":"https://openai.com/index/introducing-deep-research/"},{"date":"2025-02-24","title":"Claude 3.7 Sonnet + Claude Code 预览","who":"Anthropic","cat":"Agent 产品","desc":"混合推理模型与编码 Agent 同发，CLI Agent 进入主流","src":"https://www.anthropic.com/news/claude-3-7-sonnet"},{"date":"2025-03-06","title":"Manus 内测刷屏","who":"Manus","cat":"Agent 产品","desc":"通用 Agent 产品的“元年”符号，任务委托式交互被大众认知","src":"https://manus.im/"},{"date":"2025-04-05","title":"Llama 4 Scout / Maverick 发布","who":"Meta","cat":"模型发布","desc":"首批 MoE 开源 Llama，Scout 宣称 1000 万 token 上下文","src":"https://ai.meta.com/blog/llama-4-multimodal-intelligence/"},{"date":"2025-04-09","title":"Google 发布 A2A 协议","who":"Google","cat":"协议标准","desc":"Agent 与 Agent 之间互操作的开放协议，与 MCP 形成互补","src":"https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/"},{"date":"2025-04-16","title":"o3 / o4-mini 发布","who":"OpenAI","cat":"模型发布","desc":"在思维链内直接调用搜索、Python、视觉等全部工具","src":"https://openai.com/index/introducing-o3-and-o4-mini/"},{"date":"2025-04-29","title":"Qwen3 开源","who":"阿里巴巴","cat":"模型发布","desc":"混合思考/非思考开源家族，开源 Agent 微调的重要底座","src":"https://qwenlm.github.io/blog/qwen3/"},{"date":"2025-05-22","title":"Claude 4（Opus 4 / Sonnet 4）","who":"Anthropic","cat":"模型发布","desc":"面向长程 Agent 与编码，发布即登顶 SWE-bench","src":"https://www.anthropic.com/news/claude-4"},{"date":"2025-07-09","title":"Grok 4 发布","who":"xAI","cat":"模型发布","desc":"20 万卡集群训练，主打推理与工具调用","src":"https://x.ai/news/grok-4"},{"date":"2025-07-17","title":"ChatGPT Agent 上线","who":"OpenAI","cat":"Agent 产品","desc":"把 Operator 的浏览能力与 Deep Research 合并成通用任务 Agent","src":"https://openai.com/index/introducing-chatgpt-agent/"},{"date":"2025-08-05","title":"gpt-oss 开源","who":"OpenAI","cat":"模型发布","desc":"GPT-2 之后首次开放权重，120B/20B 推理模型","src":"https://openai.com/index/introducing-gpt-oss/"},{"date":"2025-08-07","title":"GPT-5 发布","who":"OpenAI","cat":"模型发布","desc":"路由式统一模型，免费层也可用，Agent 能力成为默认能力","src":"https://openai.com/index/introducing-gpt-5/"},{"date":"2025-09-29","title":"Claude Sonnet 4.5 发布","who":"Anthropic","cat":"模型发布","desc":"宣称可连续自主运行 30 小时，长程 Agent 叙事确立","src":"https://www.anthropic.com/news/claude-sonnet-4-5"},{"date":"2025-10-06","title":"Codex 正式 GA","who":"OpenAI","cat":"Agent 产品","desc":"编码 Agent 从研究预览走向正式可用，进入日常开发流程","src":"https://www.openai.com/index/codex-now-generally-available/"},{"date":"2025-11-18","title":"Gemini 3 Pro 发布","who":"Google DeepMind","cat":"模型发布","desc":"推理与“vibe coding”大幅提升，并即时接入搜索","src":"https://blog.google/products/gemini/gemini-3/"},{"date":"2025-11-24","title":"Claude Opus 4.5 发布","who":"Anthropic","cat":"模型发布","desc":"重夺编码基准榜首，价格降到 Opus 4.1 的三分之一","src":"https://www.anthropic.com/news/claude-opus-4-5"},{"date":"2025-12-09","title":"MCP 捐给 Linux 基金会旗下 AAIF","who":"Anthropic / Linux 基金会","cat":"协议标准","desc":"MCP 从厂商协议转为中立标准，Agentic AI Foundation 成立","src":"https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation"},{"date":"2025-12-31","title":"Meta 宣布 20 亿美元收购 Manus","who":"Meta / Manus","cat":"融资并购","desc":"Agent 创业公司被巨头天价收购，标志 Agent 商业化被认可","src":"https://www.cnbc.com/2026/08/11/manus-china-meta-acquisition.html"},{"date":"2026-01-13","title":"Anthropic 推出 Claude Cowork","who":"Anthropic","cat":"Agent 产品","desc":"把编码 Agent 泛化为通用知识工作 Agent，非程序员也能委托任务","src":"https://fortune.com/2026/01/13/anthropic-claude-cowork-ai-agent-file-managing-threaten-startups/"},{"date":"2026-03-05","title":"GPT-5.4 发布（原生电脑操作）","who":"OpenAI","cat":"模型发布","desc":"首个通用模型内建 computer use，100 万 token 上下文，工具调用重做","src":"https://openai.com/index/introducing-gpt-5-4"},{"date":"2026-03-12","title":"A2A 协议发布 v1.0.0","who":"Google / A2A 社区","cat":"协议标准","desc":"Agent 互操作协议进入稳定版，企业集成门槛下降","src":"https://a2a-protocol.org/"},{"date":"2026-04-27","title":"中国监管要求 Meta 解除 Manus 收购","who":"中国国家发改委 / Meta","cat":"政策监管","desc":"20 亿美元交易被要求回滚，跨境 AI 并购进入强监管期","src":"https://www.mergersight.com/post/meta-s-2bn-acquisition-of-manus"},{"date":"2026-05-05","title":"GPT-5.5 发布","who":"OpenAI","cat":"模型发布","desc":"agentic coding、电脑操作与知识工作能力明显提升，并成为 ChatGPT 默认模型","src":"https://llmlineage.com/zh/timeline"},{"date":"2026-07-28","title":"MCP 规范改版（无状态化）","who":"MCP / AAIF","cat":"协议标准","desc":"移除 initialize 握手与会话，协议更适合大规模服务化部署","src":"https://blog.modelcontextprotocol.io/"},{"date":"2026-08-11","title":"Manus 恢复独立运营","who":"Manus / Meta","cat":"融资并购","desc":"收购被回滚后 Manus 重回独立公司，成为跨境 AI 交易样本","src":"https://www.cnbc.com/2026/08/11/manus-china-meta-acquisition.html"},{"date":"2026-08-27","title":"A2A 加入 Agentic AI Foundation","who":"A2A / AAIF","cat":"协议标准","desc":"MCP 与 A2A 同属一个中立基金会，Agent 互操作标准收敛","src":"https://a2a-protocol.org/latest/blog/2026/08/27/a-new-chapter-for-a2a-joining-the-agentic-ai-foundation/"},{"date":"2026-09-22","title":"Claude Opus 5.5 发布","who":"Anthropic","cat":"模型发布","desc":"Claude 5.5 家族首款，主打长程 agent 与知识工作","src":"https://support.claude.com/en/articles/12138966-release-notes"},{"date":"2026-10-13","title":"Gemini 4 Argon 发布","who":"Google DeepMind","cat":"模型发布","desc":"Gemini 4 系列首款旗舰，100 万 token 上下文与更强工具使用","src":"https://www.promptzone.com/ai-model-releases"},{"date":"2026-10-22","title":"Anthropic 把 Agent Skills 捐给 AAIF","who":"Anthropic","cat":"协议标准","desc":"Agent 技能/工具打包格式进入中立标准化，生态互通加速","src":"https://simonwillison.net/2026/Oct/22/donating-agent-skills/"},{"date":"2026-10-23","title":"Kimi K3.1 Pro 发布","who":"月之暗面","cat":"模型发布","desc":"3 万亿级参数、100 万上下文，主打编程、3D 与长程 Agent 任务","src":"https://www.tmtpost.com/8184064.html"},{"date":"2026-10-26","title":"GPT-6.1 Terra 发布","who":"OpenAI","cat":"模型发布","desc":"100 万+ token 上下文，面向长程 Agent 与知识工作的新一代旗舰","src":"https://openrouter.ai/openai/gpt-6.1-terra"},{"date":"2026-10-28","title":"Gemini 4 Carbon 公布","who":"Google DeepMind","cat":"模型发布","desc":"面向高强度推理与网络安全场景的 Gemini 4 型号","src":"https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-october-2026/"},{"date":"2026-11-10","title":"Anthropic 启动 IPO 路演（估值最高约 1.4 万亿美元）","who":"Anthropic","cat":"融资并购","desc":"定价区间 70–78 美元、拟募资约 640 亿美元，或成史上最大 IPO","src":"https://www.cnbc.com/2026/11/10/anthropic-sets-price-range-of-70-to-78-in-upcoming-ipo.html"},{"date":"2026-11-12","title":"黄仁勋辞任英伟达 CEO","who":"NVIDIA","cat":"安全与风险","desc":"安全调查（涉间谍指控）后辞职，CFO Colette Kress 任临时 CEO，股价下跌","src":"https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-CEO-Transition/default.aspx"},{"date":"2026-11-10","title":"微软披露 Lazarus Agent 后门","who":"微软研究院","cat":"安全与风险","desc":"改写不到 10 个休眠神经元即可给 Agent 植入后门，模型供应链安全警报","src":"https://ytdu.com/ai/1340/"}],"stages":[{"stage":"第一阶段：雏形（2021–2022）","time":"2021-12 ~ 2022-10","feature":"让模型“会用工具、能接地”：检索 + 机器人技能 + 推理循环","rep":"WebGPT、SayCan、Inner Monologue、CoT、ReAct"},{"stage":"第二阶段：范式确立（2023）","time":"2023 全年","feature":"ReAct 循环成为共识；反思、记忆、多智能体、角色协作集中爆发；评测基准开始出现","rep":"Toolformer、Reflexion、Generative Agents、Voyager、MetaGPT、AutoGen、SWE-bench"},{"stage":"第三阶段：工程化与评测（2023 下半年–2024）","time":"2023-09 ~ 2024-12","feature":"从“能跑”到“可测、可复现”：OSWorld、SWE-agent、τ-bench、Agentless 反思复杂架构","rep":"CoALA、SWE-agent、OSWorld、τ-bench、Agentless、OpenHands、Magentic-One"},{"stage":"第四阶段：产品化与协议（2024 下半年–2025）","time":"2024-10 ~ 2025-12","feature":"computer use、深度研究、编码 Agent 三大品类成立；MCP/A2A 协议标准化","rep":"Computer Use、Operator、Deep Research、Claude Code、Manus、MCP、A2A"},{"stage":"第五阶段：训练范式与基础设施（2025–2026）","time":"2025-01 ~ 2026-08","feature":"从提示工程转向 Agentic RL、上下文工程、记忆与自进化；经济学评测登场","rep":"DeepSeek-R1、Agentic RL 综述、上下文工程、GDPval、Terminal-Bench、AAIF"},{"stage":"第六阶段：通用工作 Agent 与资本化（2026）","time":"2026 至今","feature":"Agent 从编码扩到通用知识工作；标准收敛到 AAIF；资本与安全风险同时放大","rep":"Claude Cowork、Codex、GPT-5.4 原生电脑操作、Cowork/WorkBuddy、Anthropic IPO、NVIDIA CEO 变局"}]};
+const DATA = {"papers":[["2021-12",0,"WebGPT：浏览器辅助问答 + 人类反馈","让模型自己开浏览器检索后再作答，是浏览器 Agent 的最早雏形","OpenAI","2112.09332",0],["2022-01",1,"Chain-of-Thought 思维链提示","显式写出推理步骤显著提升复杂任务表现，Agent 推理能力的底座","Google","2201.11903",0],["2022-04",2,"SayCan：把语言指令落到机器人技能上","用 LLM 给可执行技能打分，实现语言到真实动作的接地","Google","2204.01691",0],["2022-07",2,"Inner Monologue：带环境反馈的自我对话","把环境/人类反馈写回提示，形成闭环规划","Google","2207.05608",1],["2022-10",1,"ReAct：推理与行动交替","Thought→Action→Observation 循环，成为几乎所有 Agent 的事实标准范式","Princeton / Google","2210.03629",0],["2023-02",0,"Toolformer：模型自学用工具","自监督学习何时调用哪个 API，开启工具调用研究线","Meta AI","2302.04761",0],["2023-03",3,"Reflexion：语言化反思替代梯度更新","把失败经验写成反思存进记忆，实现无训练的自我改进","Northeastern / MIT","2303.11366",0],["2023-03",4,"HuggingGPT：LLM 当模型调度器","LLM 负责规划并调度 HuggingFace 上的专用模型","浙大 / 微软","2303.17580",1],["2023-04",4,"Generative Agents：生成式智能体社会","记忆—反思—计划三段式架构，25 个智能体小镇模拟","Stanford / Google","2304.03442",0],["2023-05",1,"Tree of Thoughts：树搜索式推理","用思维树 + 回溯替代线性推理，为搜索型 Agent 铺路","Princeton / DeepMind","2305.10601",0],["2023-05",0,"Gorilla：大规模 API 调用","检索感知训练 + AST 校验，大幅提升真实 API 调用准确率","UC Berkeley","2305.15334",1],["2023-05",5,"ReWOO：推理与观测解耦","先规划完整工具链再执行，显著省 token、降延迟","密歇根大学 / 微软","2305.18323",2],["2023-05",2,"Voyager：终身学习的具身智能体","自动课程 + 技能库 + 自我验证，Minecraft 里持续进化","NVIDIA / Caltech","2305.16291",0],["2023-06",6,"Mind2Web：通用网页 Agent 数据集","首个跨网站、真实任务的通用 Web Agent 基准","俄亥俄州立大学","2306.06070",1],["2023-07",4,"ChatDev：对话式软件开发","CEO/CTO/程序员等角色分工，用自然语言对话走完开发流程","清华 / OpenBMB","2307.07924",1],["2023-07",6,"WebArena：可复现的真实 Web 环境","自建四个真实站点，端到端评测 Web Agent","CMU","2307.13854",0],["2023-07",0,"ToolLLM / ToolBench：1.6 万真实 API","构造大规模 API 指令数据 + DFSDT 决策树搜索","清华 / OpenBMB","2307.16789",1],["2023-08",4,"MetaGPT：把 SOP 写进多智能体","用标准作业流程约束角色协作，输出可执行产物","深大 / 微软亚洲研究院","2308.00352",1],["2023-08",6,"AgentBench：8 环境跨域评测","首次系统比较主流 LLM 作为 Agent 的能力边界","清华 THUDM","2308.03688",0],["2023-08",7,"AutoGen：多智能体对话框架","可编程的多智能体对话编排，工程界广泛采用","微软","2308.08155",1],["2023-09",8,"CoALA：语言智能体的认知架构","用记忆分类 + 动作空间统一描述语言 Agent，被后续论文反复引用","Princeton","2309.02427",0],["2023-09",9,"大语言模型智能体综述（人大 Rise and Potential）","中文社区引用最广的 Agent 综述，梳理脑—感知—行动框架","中国人民大学","2309.07864",1],["2023-08",9,"LLM 自主智能体统一框架综述","提出 profile—memory—planning—action 统一框架","中国人民大学","2308.11432",1],["2023-10",10,"FireAct：轨迹微调","证明少量成功轨迹微调即可显著提升 Agent 表现","Google / UIUC","2310.05915",2],["2023-10",10,"AgentTuning：AgentInstruct 指令微调","构建 Agent 指令数据，兼顾 Agent 能力与通用能力","清华 / 智谱","2310.12823",2],["2023-10",6,"SWE-bench：真实 GitHub Issue 修复","软件工程 Agent 的分水岭基准，后续衍生 Verified / Pro","Princeton","2310.06770",0],["2023-11",6,"GAIA：通用 AI 助手基准","对人类简单、对模型极难的真实问题集合","Meta / HuggingFace 等","2311.12983",0],["2024-01",0,"WebVoyager：端到端多模态 Web Agent","只看截图就能操作真实网站，并给出评测方法","腾讯 / 多校","2401.13919",1],["2024-02",1,"CodeAct：以代码为动作空间","把动作统一成可执行 Python，代码即行动，成为主流 Agent 内核","UIUC / 清华等","2402.01030",0],["2024-02",6,"WebLINX：多轮对话式网页导航","真实网站上的多轮对话导航数据与模型","蒙特利尔大学 / Mila","2402.05930",2],["2024-02",7,"AgentScope：多智能体开发平台","面向消息传递的多智能体编程框架与工具链","阿里巴巴","2402.14034",2],["2024-04",6,"OSWorld：真实操作系统电脑操作","在真实 OS 里完成开放式任务，computer-use 主基准","港大 XLANG / CMU 等","2404.07972",0],["2024-05",11,"SWE-agent：智能体—计算机接口（ACI）","设计 ACI 让模型高效读改代码，开源即被广泛使用","Princeton","2405.15793",0],["2024-06",6,"τ-bench：工具—智能体—用户交互","引入 pass^k 度量真实客服场景的稳定性，强调可靠性","Sierra","2406.12045",1],["2024-07",11,"Agentless：反证复杂 Agent 必要性的三层流水线","固定流程的简单方案在 SWE-bench 上击败复杂 Agent","UIUC","2407.01489",1],["2024-07",7,"OpenHands：开源软件开发 Agent 平台","可复现的开源 SWE Agent 平台与基准环境","CMU / UIUC / All Hands AI","2407.16741",1],["2024-07",6,"AppWorld：可交互应用世界","模拟多 App 生态，评测交互式编码 Agent","AWS / 石溪大学","2407.18901",2],["2024-10",6,"Agent-as-a-Judge：用 Agent 评 Agent","提出 DevAI 数据集与过程级评审，替代单次 LLM 打分","上海 AI Lab / 牛津","2410.10934",1],["2024-11",4,"Magentic-One：通用多智能体系统","编排者 + 专项 Agent 的通用任务系统，WebArena 等表现领先","微软研究院","2411.04468",1],["2024-12",6,"TheAgentCompany：公司级长程任务","模拟真实软件公司，测长周期、跨工具协作任务","CMU","2412.14161",1],["2025-01",10,"DeepSeek-R1：纯强化学习激发推理","开源推理模型与 RL 训练路线，直接引爆 Agentic RL 研究","DeepSeek","2501.12948",0],["2025-01",12,"Agent Laboratory：LLM 当科研助理","从文献到实验到报告的端到端科研 Agent","约翰霍普金斯大学","2501.04227",2],["2025-01",13,"UI-TARS：原生 GUI Agent 模型","把截图—动作直接训进模型，GUI Agent 代表作","字节跳动 Seed","2501.12326",1],["2025-03",9,"Agent 评测综述（Survey on Evaluation of LLM-based Agents）","系统梳理 Agent 评测的维度、基准与缺口","IBM Research / Technion","2503.16416",2],["2025-04",14,"Agent 协议综述（Survey of AI Agent Protocols）","把 MCP / A2A / ANP 等协议做成统一分类","中国人民大学等","2504.16736",2],["2025-04",6,"BrowseComp：硬核浏览检索基准","专门刁难浏览 Agent 的短答案检索题，推动 Deep Research","OpenAI","2504.12516",1],["2025-04",10,"SWE-smith：合成软件工程训练数据","规模化合成 bug 与修复轨迹，缓解 SWE 训练数据荒","斯坦福 / UIUC","2504.21798",2],["2025-05",10,"WebDancer：信息检索 Agent 端到端训练","用轨迹合成 + 训练把浏览检索 Agent 做成可训练系统","阿里巴巴","2505.22648",2],["2025-06",15,"OAgents：Agent 设计的复现实证","在 GAIA / BrowseComp 上严格消融，指出多数 Agent 设计缺乏可比性","人大 / 上海 AI Lab 等","2506.15741",2],["2025-06",9,"Deep Research Agents：系统路线图","把深度研究 Agent 拆成规划、检索、工具、报告四层","NUS 等","2506.18096",2],["2025-07",10,"WebSailor：超人类网页推理","高难度浏览任务的数据合成与训练，开源深度研究 Agent","阿里巴巴","2507.02592",3],["2025-07",16,"上下文工程综述","把提示工程升级为上下文工程：写入、管理、压缩、隔离","多机构合作","2507.13334",1],["2025-07",9,"自我进化 Agent 综述","回答在哪一层、用什么信号、如何自进化","复旦大学等","2507.21046",2],["2025-08",10,"ComputerRL：端到端在线 RL 训练电脑操作","把在线 RL 扩展到真实桌面环境，OSWorld 显著提升","阿里巴巴 / 清华","2508.14040",3],["2025-09",9,"Agentic RL 全景综述","系统整理 Agentic 强化学习的数据、奖励、环境与训练范式","上海 AI Lab / 清华等","2509.02547",1],["2025-10",6,"GDPval：真实经济价值任务评测","用 44 个职业的真实交付物衡量模型的实际经济价值","OpenAI","2510.04374",1],["2025-10",9,"Agentic AI 架构与应用综述","从架构、应用到治理的全景梳理","多校合作","2510.25445",2],["2026-01",9,"Agent-as-a-Judge 综述","从 LLM-as-Judge 走向可规划、可验证的 Agent 评审","哈工大（深圳）等","2601.05111",3],["2026-01",6,"Terminal-Bench 2.0：终端长任务基准","89 个真实终端任务，前沿模型得分不足 65%，成为长程能力新标尺","Stanford / Laude Institute","2601.11868",3],["2026-04",0,"Agentic Tool Use 综述","把工具使用分成提示、监督学习、奖励驱动三条范式","多校合作","2604.00835",3],["2026-04",10,"反思 Agentic RL","讨论 Agentic RL 与传统 RL 的边界与训练稳定性问题","多机构合作","2604.27859",3],["2026-05",16,"Agent 记忆机制演化综述","从“存储”走向“经验”，给出记忆机制演化框架","多校合作","2605.06716",3],["2026-07",10,"自进化 Agentic RL 系统","让权重、提示、工具、harness 在部署后持续自进化","多机构合作","2607.01120",3],["2026-10",6,"SWE-Bench Pro V2：更抗污染的编码基准","公开集大修 480/731 题，应对数据污染与过拟合","Scale AI 等","2610.24206",3]],"events":[["2022-11-30",0,"ChatGPT 发布","两个月破亿用户，AI 从实验室走向大众，也为后续 Agent 产品化铺路","OpenAI","https://openai.com/index/chatgpt/"],["2023-03-14",1,"GPT-4 发布","多模态 + 考试级能力，成为大量 Agent 的推理内核","OpenAI","https://openai.com/index/gpt-4-research/"],["2023-03-23",2,"ChatGPT Plugins 上线","第三方工具接入 LLM 的首个大规模形态，工具生态开端","OpenAI","https://openai.com/index/chatgpt-plugins/"],["2023-03-30",0,"AutoGPT 开源爆火","第一个大众级自主 Agent 项目，GitHub 星标暴涨，引发“自主 Agent”热潮","Significant Gravitas","https://github.com/Significant-Gravitas/AutoGPT"],["2023-07-18",1,"Llama 2 开放商用","开源权重可商用，Agent 生态的开源底座","Meta","https://ai.meta.com/llama/"],["2023-11-06",0,"OpenAI 首届 DevDay","GPT-4 Turbo、Assistants API、GPTs 三连发，Agent 开发进入平台期","OpenAI","https://openai.com/index/new-models-and-developer-products-announced-at-devday/"],["2023-12-08",3,"欧盟 AI Act 达成政治协议","全球首部综合性 AI 法案，确立风险分级监管框架","欧盟","https://www.europarl.europa.eu/news/en/press-room/20231206IPR15699/"],["2024-02-15",1,"Sora 发布","视频生成走向世界模型叙事，多模态 Agent 的环境理解被重估","OpenAI","https://openai.com/index/sora/"],["2024-03-04",1,"Claude 3 系列发布","Opus 登顶多项基准，长上下文与工具调用能力成为卖点","Anthropic","https://www.anthropic.com/news/claude-3-family"],["2024-04-18",1,"Llama 3 发布","8B/70B 开源，社区 Agent 微调的主要底座","Meta","https://ai.meta.com/blog/meta-llama-3/"],["2024-05-13",1,"GPT-4o 发布","原生全模态、低延迟语音，为实时语音 Agent 打开空间","OpenAI","https://openai.com/index/hello-gpt-4o/"],["2024-06-20",1,"Claude 3.5 Sonnet + Artifacts","编码与 agentic 任务大幅提升，Artifacts 让模型输出变成可交互产物","Anthropic","https://www.anthropic.com/news/claude-3-5-sonnet"],["2024-09-12",1,"OpenAI o1-preview 发布","推理模型（RL + 长思维链）范式确立，Agent 的规划能力跃升","OpenAI","https://openai.com/index/introducing-openai-o1-preview/"],["2024-10-09",4,"诺贝尔物理学奖/化学奖颁给 AI 学者","Hinton、Hopfield 与 Hassabis、Jumper 获奖，AI 进入主流科学叙事","诺贝尔奖委员会","https://www.nobelprize.org/prizes/physics/2024/summary/"],["2024-10-22",0,"Anthropic 发布 Computer Use","首个主流 computer-use 能力：模型直接看屏幕、动鼠标键盘","Anthropic","https://www.anthropic.com/news/3-5-models-and-computer-use"],["2024-12-11",1,"Gemini 2.0 Flash 发布","官方口径“为 Agent 时代打造”，原生工具调用与多模态输出","Google DeepMind","https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/"],["2024-12-20",1,"OpenAI o3 预告，ARC-AGI 大幅突破","推理模型在抽象推理基准上越过人类门槛，引发算力与安全讨论","OpenAI","https://openai.com/12-days/"],["2024-12-26",1,"DeepSeek-V3 开源","低成本训练出前沿水平 MoE 模型，改变算力叙事","DeepSeek","https://github.com/deepseek-ai/DeepSeek-V3"],["2025-01-20",1,"DeepSeek-R1 开源","纯 RL 推理模型开源，英伟达单日市值蒸发约 6000 亿美元","DeepSeek","https://api-docs.deepseek.com/news/news250120"],["2025-01-21",5,"Stargate 计划宣布","四年 5000 亿美元 AI 基建，算力成为国家级议题","OpenAI / 软银 / 甲骨文","https://openai.com/index/announcing-the-stargate-project/"],["2025-01-23",0,"OpenAI Operator 上线","浏览器 computer-use Agent 产品化，CUA 模型对外","OpenAI","https://openai.com/index/introducing-operator/"],["2025-02-02",0,"OpenAI Deep Research 上线","把多步研究任务变成可委托产品，“深度研究”品类成立","OpenAI","https://openai.com/index/introducing-deep-research/"],["2025-02-24",0,"Claude 3.7 Sonnet + Claude Code 预览","混合推理模型与编码 Agent 同发，CLI Agent 进入主流","Anthropic","https://www.anthropic.com/news/claude-3-7-sonnet"],["2025-03-06",0,"Manus 内测刷屏","通用 Agent 产品的“元年”符号，任务委托式交互被大众认知","Manus","https://manus.im/"],["2025-04-05",1,"Llama 4 Scout / Maverick 发布","首批 MoE 开源 Llama，Scout 宣称 1000 万 token 上下文","Meta","https://ai.meta.com/blog/llama-4-multimodal-intelligence/"],["2025-04-09",2,"Google 发布 A2A 协议","Agent 与 Agent 之间互操作的开放协议，与 MCP 形成互补","Google","https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/"],["2025-04-16",1,"o3 / o4-mini 发布","在思维链内直接调用搜索、Python、视觉等全部工具","OpenAI","https://openai.com/index/introducing-o3-and-o4-mini/"],["2025-04-29",1,"Qwen3 开源","混合思考/非思考开源家族，开源 Agent 微调的重要底座","阿里巴巴","https://qwenlm.github.io/blog/qwen3/"],["2025-05-22",1,"Claude 4（Opus 4 / Sonnet 4）","面向长程 Agent 与编码，发布即登顶 SWE-bench","Anthropic","https://www.anthropic.com/news/claude-4"],["2025-07-09",1,"Grok 4 发布","20 万卡集群训练，主打推理与工具调用","xAI","https://x.ai/news/grok-4"],["2025-07-17",0,"ChatGPT Agent 上线","把 Operator 的浏览能力与 Deep Research 合并成通用任务 Agent","OpenAI","https://openai.com/index/introducing-chatgpt-agent/"],["2025-08-05",1,"gpt-oss 开源","GPT-2 之后首次开放权重，120B/20B 推理模型","OpenAI","https://openai.com/index/introducing-gpt-oss/"],["2025-08-07",1,"GPT-5 发布","路由式统一模型，免费层也可用，Agent 能力成为默认能力","OpenAI","https://openai.com/index/introducing-gpt-5/"],["2025-09-29",1,"Claude Sonnet 4.5 发布","宣称可连续自主运行 30 小时，长程 Agent 叙事确立","Anthropic","https://www.anthropic.com/news/claude-sonnet-4-5"],["2025-10-06",0,"Codex 正式 GA","编码 Agent 从研究预览走向正式可用，进入日常开发流程","OpenAI","https://www.openai.com/index/codex-now-generally-available/"],["2025-11-18",1,"Gemini 3 Pro 发布","推理与“vibe coding”大幅提升，并即时接入搜索","Google DeepMind","https://blog.google/products/gemini/gemini-3/"],["2025-11-24",1,"Claude Opus 4.5 发布","重夺编码基准榜首，价格降到 Opus 4.1 的三分之一","Anthropic","https://www.anthropic.com/news/claude-opus-4-5"],["2025-12-09",2,"MCP 捐给 Linux 基金会旗下 AAIF","MCP 从厂商协议转为中立标准，Agentic AI Foundation 成立","Anthropic / Linux 基金会","https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation"],["2025-12-31",6,"Meta 宣布 20 亿美元收购 Manus","Agent 创业公司被巨头天价收购，标志 Agent 商业化被认可","Meta / Manus","https://www.cnbc.com/2026/08/11/manus-china-meta-acquisition.html"],["2026-01-13",0,"Anthropic 推出 Claude Cowork","把编码 Agent 泛化为通用知识工作 Agent，非程序员也能委托任务","Anthropic","https://fortune.com/2026/01/13/anthropic-claude-cowork-ai-agent-file-managing-threaten-startups/"],["2026-03-05",1,"GPT-5.4 发布（原生电脑操作）","首个通用模型内建 computer use，100 万 token 上下文，工具调用重做","OpenAI","https://openai.com/index/introducing-gpt-5-4"],["2026-03-12",2,"A2A 协议发布 v1.0.0","Agent 互操作协议进入稳定版，企业集成门槛下降","Google / A2A 社区","https://a2a-protocol.org/"],["2026-04-27",3,"中国监管要求 Meta 解除 Manus 收购","20 亿美元交易被要求回滚，跨境 AI 并购进入强监管期","中国国家发改委 / Meta","https://www.mergersight.com/post/meta-s-2bn-acquisition-of-manus"],["2026-05-05",1,"GPT-5.5 发布","agentic coding、电脑操作与知识工作能力明显提升，并成为 ChatGPT 默认模型","OpenAI","https://llmlineage.com/zh/timeline"],["2026-07-28",2,"MCP 规范改版（无状态化）","移除 initialize 握手与会话，协议更适合大规模服务化部署","MCP / AAIF","https://blog.modelcontextprotocol.io/"],["2026-08-11",6,"Manus 恢复独立运营","收购被回滚后 Manus 重回独立公司，成为跨境 AI 交易样本","Manus / Meta","https://www.cnbc.com/2026/08/11/manus-china-meta-acquisition.html"],["2026-08-27",2,"A2A 加入 Agentic AI Foundation","MCP 与 A2A 同属一个中立基金会，Agent 互操作标准收敛","A2A / AAIF","https://a2a-protocol.org/latest/blog/2026/08/27/a-new-chapter-for-a2a-joining-the-agentic-ai-foundation/"],["2026-09-22",1,"Claude Opus 5.5 发布","Claude 5.5 家族首款，主打长程 agent 与知识工作","Anthropic","https://support.claude.com/en/articles/12138966-release-notes"],["2026-10-13",1,"Gemini 4 Argon 发布","Gemini 4 系列首款旗舰，100 万 token 上下文与更强工具使用","Google DeepMind","https://www.promptzone.com/ai-model-releases"],["2026-10-22",2,"Anthropic 把 Agent Skills 捐给 AAIF","Agent 技能/工具打包格式进入中立标准化，生态互通加速","Anthropic","https://simonwillison.net/2026/Oct/22/donating-agent-skills/"],["2026-10-23",1,"Kimi K3.1 Pro 发布","3 万亿级参数、100 万上下文，主打编程、3D 与长程 Agent 任务","月之暗面","https://www.tmtpost.com/8184064.html"],["2026-10-26",1,"GPT-6.1 Terra 发布","100 万+ token 上下文，面向长程 Agent 与知识工作的新一代旗舰","OpenAI","https://openrouter.ai/openai/gpt-6.1-terra"],["2026-10-28",1,"Gemini 4 Carbon 公布","面向高强度推理与网络安全场景的 Gemini 4 型号","Google DeepMind","https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-october-2026/"],["2026-11-10",6,"Anthropic 启动 IPO 路演（估值最高约 1.4 万亿美元）","定价区间 70–78 美元、拟募资约 640 亿美元，或成史上最大 IPO","Anthropic","https://www.cnbc.com/2026/11/10/anthropic-sets-price-range-of-70-to-78-in-upcoming-ipo.html"],["2026-11-12",7,"黄仁勋辞任英伟达 CEO","安全调查（涉间谍指控）后辞职，CFO Colette Kress 任临时 CEO，股价下跌","NVIDIA","https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-CEO-Transition/default.aspx"],["2026-11-10",7,"微软披露 Lazarus Agent 后门","改写不到 10 个休眠神经元即可给 Agent 植入后门，模型供应链安全警报","微软研究院","https://ytdu.com/ai/1340/"]],"stages":[["第一阶段：雏形（2021–2022）","2021-12 ~ 2022-10","让模型“会用工具、能接地”：检索 + 机器人技能 + 推理循环","WebGPT、SayCan、Inner Monologue、CoT、ReAct"],["第二阶段：范式确立（2023）","2023 全年","ReAct 循环成为共识；反思、记忆、多智能体、角色协作集中爆发；评测基准开始出现","Toolformer、Reflexion、Generative Agents、Voyager、MetaGPT、AutoGen、SWE-bench"],["第三阶段：工程化与评测（2023 下半年–2024）","2023-09 ~ 2024-12","从“能跑”到“可测、可复现”：OSWorld、SWE-agent、τ-bench、Agentless 反思复杂架构","CoALA、SWE-agent、OSWorld、τ-bench、Agentless、OpenHands、Magentic-One"],["第四阶段：产品化与协议（2024 下半年–2025）","2024-10 ~ 2025-12","computer use、深度研究、编码 Agent 三大品类成立；MCP/A2A 协议标准化","Computer Use、Operator、Deep Research、Claude Code、Manus、MCP、A2A"],["第五阶段：训练范式与基础设施（2025–2026）","2025-01 ~ 2026-08","从提示工程转向 Agentic RL、上下文工程、记忆与自进化；经济学评测登场","DeepSeek-R1、Agentic RL 综述、上下文工程、GDPval、Terminal-Bench、AAIF"],["第六阶段：通用工作 Agent 与资本化（2026）","2026 至今","Agent 从编码扩到通用知识工作；标准收敛到 AAIF；资本与安全风险同时放大","Claude Cowork、Codex、GPT-5.4 原生电脑操作、Cowork/WorkBuddy、Anthropic IPO、NVIDIA CEO 变局"]],"dirs":["工具使用","基础方法","具身智能","记忆与反思","多智能体","规划","评测基准","框架与工程","架构与综述","综述","训练与 RL","软件工程","应用","具身与 GUI","协议与综述","实证研究","记忆与上下文"],"cats":["Agent 产品","模型发布","协议标准","政策监管","学术荣誉","算力硬件","融资并购","安全与风险"],"impacts":["奠基","高影响","主流","前沿"]};
+const P = DATA.papers, E = DATA.events, S = DATA.stages;
+const DIRS = DATA.dirs, CATS = DATA.cats, IMPS = DATA.impacts;
 const $ = s => document.querySelector(s);
 const esc = s => String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const STORE = {
-  get(k,d){ try{ return JSON.parse(localStorage.getItem('atlas.'+k)) ?? d; }catch(e){ return d; } },
-  set(k,v){ try{ localStorage.setItem('atlas.'+k, JSON.stringify(v)); }catch(e){} }
+  get(k,d){ try{ return JSON.parse(localStorage.getItem('aa.'+k)) ?? d; }catch(e){ return d; } },
+  set(k,v){ try{ localStorage.setItem('aa.'+k, JSON.stringify(v)); }catch(e){} }
 };
-let fav = new Set(STORE.get('fav',[]));
-let read = new Set(STORE.get('read',[]));
-let notes = STORE.get('notes',{});
-const state = { view:'papers', q:'', filter:'', onlyFav:false };
+let fav = new Set(STORE.get('fav',[])), read = new Set(STORE.get('read',[])), notes = STORE.get('notes',{});
+const state = {view:'papers', q:'', cat:-1, onlyFav:false};
 
-const DIRS = ['全部','奠基必读','基础方法','工具使用','规划','记忆与反思','记忆与上下文','多智能体','框架与工程','软件工程','具身智能','具身与 GUI','训练与 RL','评测基准','综述','架构与综述','实证研究','应用','协议与综述'];
-const CATS = ['全部','模型发布','Agent 产品','协议标准','融资并购','政策监管','算力硬件','学术荣誉','安全与风险'];
-const pid = p => 'p:'+p.arxiv;
-const eid = e => 'e:'+e.date+'|'+e.title;
+const pid = i => 'p'+i, eid = i => 'e'+i;
 
-function saveFav(){ STORE.set('fav',[...fav]); }
-function saveRead(){ STORE.set('read',[...read]); }
-function stats(){
-  $('#s3').textContent = read.size;
-  $('#s4').textContent = fav.size;
+function counters(){
+  $('#s-read').textContent = read.size;
+  $('#s-fav').textContent = fav.size;
 }
-
-function chipsFor(view){
+function chips(){
   const box = $('#chips');
-  if(view==='papers'){
-    box.innerHTML = DIRS.map(d=>`<button class="chip ${state.filter===d?'on':''}" data-f="${esc(d)}">${esc(d)}</button>`).join('')
-      + `<button class="chip fav ${state.onlyFav?'on':''}" id="favchip">只看收藏</button>`;
-  } else if(view==='events'){
-    box.innerHTML = CATS.map(c=>`<button class="chip ${state.filter===c?'on':''}" data-f="${esc(c)}">${esc(c)}</button>`).join('');
-  } else {
-    box.innerHTML = '';
-  }
-}
-
-function matchPaper(p){
-  if(state.onlyFav && !fav.has(pid(p))) return false;
-  if(state.filter==='奠基必读'){ if(p.impact!=='奠基') return false; }
-  else if(state.filter && state.filter!=='全部' && p.direction!==state.filter) return false;
-  if(!state.q) return true;
-  const q = state.q.toLowerCase();
-  return [p.title,p.org,p.contribution,p.direction,p.impact].join(' ').toLowerCase().includes(q);
-}
-function matchEvent(e){
-  if(state.filter && state.filter!=='全部' && e.cat!==state.filter) return false;
-  if(!state.q) return true;
-  const q = state.q.toLowerCase();
-  return [e.title,e.who,e.desc,e.cat,e.date].join(' ').toLowerCase().includes(q);
+  const list = state.view==='papers' ? [['全部',-1],...DIRS.map((d,i)=>[d,i])]
+             : state.view==='events' ? [['全部',-1],...CATS.map((c,i)=>[c,i])] : [];
+  if(!list.length){ box.innerHTML=''; return; }
+  const rows = state.view==='papers' ? P : E;
+  const counts = list.map(([n,i])=> i<0 ? rows.length : rows.filter(r=>r[1]===i).length);
+  box.innerHTML = list.map(([n,i],k)=>`<button class="chip ${state.cat===i?'on':''}" data-c="${i}">${esc(n)}<i>${counts[k]}</i></button>`).join('')
+    + (state.view==='papers' ? `<button class="chip fav ${state.onlyFav?'on':''}" id="favchip">只看收藏<i>${fav.size}</i></button>` : '');
 }
 
 function renderPapers(){
-  const list = DATA.papers.filter(matchPaper)
-    .sort((a,b)=> a.date<b.date?1:-1);
-  if(!list.length) return empty();
-  let out='', lastYear='';
-  for(const p of list){
-    const y = p.date.slice(0,4);
-    if(y!==lastYear){ out += `<div class="yearmark">${y}</div>`; lastYear=y; }
-    const isF = fav.has(pid(p)), isR = read.has(pid(p));
-    out += `<div class="card" data-id="${esc(pid(p))}" data-kind="p">
-      <div class="row1">
-        <h3>${esc(p.title)}</h3>
-        <span class="badge ${esc(p.impact)}">${esc(p.impact)}</span>
-      </div>
-      <div class="meta"><span>${esc(p.date)}</span><span>${esc(p.org)}</span><span>${esc(p.direction)}</span></div>
-      <div class="contribution">${esc(p.contribution)}</div>
-      ${(isF||isR)?`<div class="flags">${isF?'<span class="flag">★</span>':''}${isR?'<span class="flag">✓</span>':''}</div>`:''}
-    </div>`;
+  const key = state.q.toLowerCase();
+  let idx = P.map((_,i)=>i).filter(i=>{
+    const r = P[i];
+    if(state.onlyFav && !fav.has(pid(i))) return false;
+    if(state.cat>=0 && r[1]!==state.cat) return false;
+    if(!key) return true;
+    return (r[2]+' '+r[4]+' '+r[3]+' '+DIRS[r[1]]).toLowerCase().includes(key);
+  }).sort((a,b)=> P[a][0]<P[b][0] ? 1 : P[a][0]>P[b][0] ? -1 : 0);
+  const out=[]; let last='';
+  for(const i of idx){
+    const r = P[i], y = r[0].slice(0,4);
+    if(y!==last){ out.push(`<div class="yearmark"><b>${y}</b><i></i><em>${y==='2021'?'起点':'　'}</em></div>`); last=y; }
+    const f = fav.has(pid(i)), rd = read.has(pid(i));
+    out.push(`<div class="row k${r[1]%10}" data-i="${i}">
+      <div class="r1"><span class="badge c${r[1]%10}">${esc(DIRS[r[1]])}</span><span class="imp i${r[6]}">${esc(IMPS[r[6]])}</span></div>
+      <div class="name">${esc(r[2])}</div>
+      <div class="contrib">${esc(r[3])}</div>
+      <div class="sub"><span>${esc(r[0])}</span><span>${esc(r[4])}</span></div>
+      ${f?'<span class="flag">★</span>':rd?'<span class="flag">✓</span>':''}
+    </div>`);
   }
-  $('#main').innerHTML = out;
+  paint(out, idx.length, P.length, '篇论文');
 }
 
 function renderEvents(){
-  const list = DATA.events.filter(matchEvent).sort((a,b)=> a.date<b.date?1:-1);
-  if(!list.length) return empty();
-  let out='', lastYear='';
-  for(const e of list){
-    const y = e.date.slice(0,4);
-    if(y!==lastYear){ out += `<div class="yearmark">${y}</div>`; lastYear=y; }
-    const isF = fav.has(eid(e));
-    out += `<div class="ev" data-id="${esc(eid(e))}" data-kind="e">
-      <div class="evdate">${esc(e.date.slice(5))}</div>
-      <div class="evbody">
-        <p class="evtitle">${esc(e.title)} ${isF?'<span class="flag">★</span>':''}</p>
-        <div class="evmeta"><span class="cat ${esc(e.cat)}">${esc(e.cat)}</span>${esc(e.who)}</div>
-        <div class="evdesc">${esc(e.desc)}</div>
-      </div>
-    </div>`;
+  const key = state.q.toLowerCase();
+  let idx = E.map((_,i)=>i).filter(i=>{
+    const r = E[i];
+    if(state.cat>=0 && r[1]!==state.cat) return false;
+    if(!key) return true;
+    return (r[2]+' '+r[4]+' '+r[3]+' '+CATS[r[1]]+' '+r[0]).toLowerCase().includes(key);
+  }).sort((a,b)=> E[a][0]<E[b][0] ? 1 : E[a][0]>E[b][0] ? -1 : 0);
+  const out=[]; let last='';
+  for(const i of idx){
+    const r = E[i], y = r[0].slice(0,4);
+    if(y!==last){ out.push(`<div class="yearmark"><b>${y}</b><i></i><em>　</em></div>`); last=y; }
+    const f = fav.has(eid(i));
+    out.push(`<div class="row ev k${r[1]%10}" data-t="e" data-i="${i}">
+      <div class="r1"><span class="pill">${esc(r[0].slice(5))}</span><span class="badge c${r[1]%10}">${esc(CATS[r[1]])}</span></div>
+      <div class="name">${esc(r[2])}</div>
+      <div class="contrib">${esc(r[3])}</div>
+      <div class="sub"><span>${esc(r[4])}</span></div>
+      ${f?'<span class="flag">★</span>':''}
+    </div>`);
   }
-  $('#main').innerHTML = out;
+  paint(out, idx.length, E.length, '个事件');
 }
 
 function renderStages(){
-  $('#main').innerHTML = DATA.stages.map((s,i)=>`
+  const key = state.q.toLowerCase();
+  const list = S.filter(s=> !key || (s.join(' ')).toLowerCase().includes(key));
+  $('#list').innerHTML = list.length ? list.map((s,i)=>`
     <div class="stage">
-      <div class="idx">0${i+1}</div>
-      <h3>${esc(s.stage)}</h3>
-      <div class="tm">${esc(s.time)}</div>
-      <p>${esc(s.feature)}</p>
-      <div class="rep">代表：${esc(s.rep)}</div>
-    </div>`).join('');
+      <div class="n">0${i+1}</div>
+      <h3>${esc(s[0])}</h3>
+      <div class="t">${esc(s[1])}</div>
+      <p>${esc(s[2])}</p>
+      <div class="rep">代表：${esc(s[3])}</div>
+    </div>`).join('') : `<div class="empty">没有匹配的条目</div>`;
+  $('#count').textContent = `六阶段框架 · 显示 ${list.length} / ${S.length}`;
 }
 
-function empty(){ $('#main').innerHTML = '<div class="empty">没有匹配的条目，换个关键词试试。</div>'; }
+function paint(out, n, total, unit){
+  const box = $('#list');
+  box.innerHTML = out.length ? out.join('') : `<div class="empty">没有匹配的条目，换个关键词或筛选试试</div>`;
+  $('#count').textContent = `显示 ${n} / ${total} ${unit}`;
+}
 
 function render(){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on', t.dataset.view===state.view));
-  chipsFor(state.view);
+  document.querySelectorAll('.seg button').forEach(b=>b.classList.toggle('on', b.dataset.view===state.view));
+  chips();
   if(state.view==='papers') renderPapers();
   else if(state.view==='events') renderEvents();
   else renderStages();
-  stats();
+  counters();
 }
 
-/* interactions */
-document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
-  state.view=t.dataset.view; state.filter=''; state.onlyFav=false; render();
+document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>{
+  state.view=b.dataset.view; state.cat=-1; state.onlyFav=false; render();
+  window.scrollTo({top:0, behavior:'smooth'});
 }));
-$('#q').addEventListener('input',e=>{ state.q=e.target.value.trim(); render(); });
-$('#chips').addEventListener('click',e=>{
-  const b=e.target.closest('.chip'); if(!b) return;
-  if(b.id==='favchip'){ state.onlyFav=!state.onlyFav; }
-  else { state.filter = b.dataset.f; }
+$('#q').addEventListener('input', e=>{ state.q=e.target.value.trim(); render(); });
+$('#chips').addEventListener('click', e=>{
+  const c=e.target.closest('.chip'); if(!c) return;
+  if(c.id==='favchip') state.onlyFav=!state.onlyFav;
+  else state.cat = +c.dataset.c;
   render();
 });
 
-function openSheet(html){ $('#sheet').innerHTML = `<button class="close" id="closeBtn">✕</button>` + html; $('#mask').classList.add('on'); }
-$('#mask').addEventListener('click',e=>{ if(e.target.id==='mask') closeSheet(); });
-document.getElementById('sheet').addEventListener('click',e=>{ if(e.target.id==='closeBtn') closeSheet(); });
-function closeSheet(){ $('#mask').classList.remove('on'); }
-
-function openPaper(p){
-  const id = pid(p), isF = fav.has(id), isR = read.has(id);
-  openSheet(`
-    <h2>${esc(p.title)}</h2>
-    <div class="kv"><b>时间</b><span>${esc(p.date)}</span></div>
-    <div class="kv"><b>机构</b><span>${esc(p.org)}</span></div>
-    <div class="kv"><b>方向</b><span>${esc(p.direction)} · ${esc(p.impact)}</span></div>
-    <div class="body">${esc(p.contribution)}</div>
-    <div class="kv"><b>原文</b><a href="https://arxiv.org/abs/${esc(p.arxiv)}" target="_blank" rel="noopener">arXiv:${esc(p.arxiv)}</a></div>
-    <div class="acts">
-      <button class="btn ${isR?'on':''}" data-act="read">${isR?'已读 ✓':'标记已读'}</button>
-      <button class="btn ${isF?'on':''}" data-act="fav">${isF?'已收藏 ★':'收藏'}</button>
-    </div>
-    <div class="note">
-      <label>我的笔记（只存在这台设备的浏览器里）</label>
-      <textarea id="noteBox" placeholder="记一句这论文能用在哪儿…">${esc(notes[id]||'')}</textarea>
-    </div>`);
-  $('#sheet').querySelector('[data-act="read"]').onclick = ()=>{ read.has(id)?read.delete(id):read.add(id); saveRead(); openPaper(p); render(); };
-  $('#sheet').querySelector('[data-act="fav"]').onclick = ()=>{ fav.has(id)?fav.delete(id):fav.add(id); saveFav(); openPaper(p); render(); };
-  $('#noteBox').addEventListener('input',e=>{ const v=e.target.value.trim(); if(v) notes[id]=v; else delete notes[id]; STORE.set('notes',notes); });
+let cur = null;
+function openSheet(kind, i){
+  cur = {kind, i};
+  const isPaper = kind==='p';
+  const r = isPaper ? P[i] : E[i];
+  const id = isPaper ? pid(i) : eid(i);
+  $('#s-name').textContent = r[2];
+  $('#s-meta').innerHTML = isPaper
+    ? `<span class="badge c${r[1]%10}">${esc(DIRS[r[1]])}</span><span class="imp i${r[6]}">${esc(IMPS[r[6]])}</span><span>${esc(r[0])}</span>`
+    : `<span class="badge c${r[1]%10}">${esc(CATS[r[1]])}</span><span>${esc(r[0])}</span>`;
+  $('#s-body').textContent = isPaper ? r[3] : r[3];
+  $('#s-dl').innerHTML = isPaper
+    ? `<dt>机构</dt><dd>${esc(r[4])}</dd><dt>发表</dt><dd>${esc(r[0])}</dd><dt>arXiv</dt><dd><a href="https://arxiv.org/abs/${esc(r[5])}" target="_blank" rel="noopener">${esc(r[5])}</a></dd>`
+    : `<dt>主体</dt><dd>${esc(r[4])}</dd><dt>日期</dt><dd>${esc(r[0])}</dd><dt>来源</dt><dd><a href="${esc(r[5])}" target="_blank" rel="noopener">${esc(r[5].replace(/^https?:\/\//,'').slice(0,34))}…</a></dd>`;
+  $('#s-link').href = isPaper ? `https://arxiv.org/abs/${r[5]}` : r[5];
+  $('#s-link').textContent = isPaper ? '查看论文' : '查看来源';
+  const rb=$('#s-btn-read'), fb=$('#s-btn-fav');
+  rb.style.display = isPaper ? '' : 'none';
+  rb.classList.toggle('on', read.has(id)); rb.textContent = read.has(id) ? '已读 ✓' : '标记已读';
+  fb.classList.toggle('on', fav.has(id)); fb.textContent = fav.has(id) ? '已收藏 ★' : '收藏';
+  rb.onclick = ()=>{ read.has(id)?read.delete(id):read.add(id); STORE.set('read',[...read]); openSheet(kind,i); render(); };
+  fb.onclick = ()=>{ fav.has(id)?fav.delete(id):fav.add(id); STORE.set('fav',[...fav]); openSheet(kind,i); render(); };
+  $('#s-note').value = notes[id] || '';
+  $('#sheet').classList.add('show');
 }
-
-function openEvent(e){
-  const id = eid(e), isF = fav.has(id);
-  openSheet(`
-    <h2>${esc(e.title)}</h2>
-    <div class="kv"><b>日期</b><span>${esc(e.date)}</span></div>
-    <div class="kv"><b>主体</b><span>${esc(e.who)}</span></div>
-    <div class="kv"><b>类别</b><span>${esc(e.cat)}</span></div>
-    <div class="body">${esc(e.desc)}</div>
-    <div class="kv"><b>来源</b><a href="${esc(e.src)}" target="_blank" rel="noopener">${esc(e.src)}</a></div>
-    <div class="acts"><button class="btn ${isF?'on':''}" data-act="fav">${isF?'已收藏 ★':'收藏'}</button></div>`);
-  $('#sheet').querySelector('[data-act="fav"]').onclick = ()=>{ fav.has(id)?fav.delete(id):fav.add(id); saveFav(); openEvent(e); render(); };
-}
-
-$('#main').addEventListener('click',e=>{
-  const el = e.target.closest('[data-id]'); if(!el) return;
-  const id = el.dataset.id;
-  if(id.startsWith('p:')){
-    const arxiv = id.slice(2);
-    const p = DATA.papers.find(x=>x.arxiv===arxiv); if(p) openPaper(p);
-  } else {
-    const e2 = DATA.events.find(x=>eid(x)===id); if(e2) openEvent(e2);
-  }
+function closeSheet(){ $('#sheet').classList.remove('show'); }
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeSheet(); });
+$('#s-note').addEventListener('input', e=>{
+  if(!cur) return;
+  const id = cur.kind==='p' ? pid(cur.i) : eid(cur.i);
+  const v = e.target.value.trim();
+  if(v) notes[id]=v; else delete notes[id];
+  STORE.set('notes', notes);
 });
-
-/* export / import */
-$('#exp').onclick = ()=>{
-  const blob = new Blob([JSON.stringify({fav:[...fav],read:[...read],notes},null,2)],{type:'application/json'});
-  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
-  a.download='agent-atlas-my-marks.json'; a.click(); URL.revokeObjectURL(a.href);
-};
-$('#imp').onclick = ()=> $('#file').click();
-$('#file').onchange = e=>{
-  const f=e.target.files[0]; if(!f) return;
-  const r=new FileReader();
-  r.onload=()=>{ try{
-    const d=JSON.parse(r.result);
-    if(Array.isArray(d.fav)) fav=new Set(d.fav);
-    if(Array.isArray(d.read)) read=new Set(d.read);
-    if(d.notes&&typeof d.notes==='object') notes=d.notes;
-    saveFav(); saveRead(); STORE.set('notes',notes); closeSheet(); render();
-  }catch(err){ alert('文件格式不对'); } };
-  r.readAsText(f);
-};
-$('#clr').onclick = ()=>{ if(!confirm('清空已读、收藏和笔记？')) return; fav.clear(); read.clear(); notes={}; saveFav(); saveRead(); STORE.set('notes',notes); render(); };
-
-$('#s1').textContent = DATA.papers.length;
-$('#s2').textContent = DATA.events.length;
+$('#list').addEventListener('click', e=>{
+  const el = e.target.closest('.row'); if(!el) return;
+  openSheet(el.dataset.t==='e' ? 'e' : 'p', +el.dataset.i);
+});
+$('#s-total').textContent = P.length;
 render();
 </script>
 </body>
