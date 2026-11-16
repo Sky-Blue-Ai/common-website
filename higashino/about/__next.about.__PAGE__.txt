@@ -1,0 +1,29 @@
+1:"$Sreact.fragment"
+2:"/common-website/higashino/_next/static/chunks/0htn850pga6bz.js"
+3:I[56713,["$2"],"default"]
+4:I[39756,["$2"],"default"]
+5:I[37457,["$2"],"default"]
+6:I[22016,["$2"],""]
+d:I[97367,["$2"],"OutletBoundary"]
+e:"$Sreact.suspense"
+11:"ViewportBoundary"
+12:I[97367,["$2"],"$11"]
+13:"MetadataBoundary"
+14:I[97367,["$2"],"$13"]
+15:I[27201,["$2"],"IconMark"]
+:HL["/common-website/higashino/_next/static/chunks/3huzznjt6nbs0.css","style"]
+8:X
+b:X
+b:C
+c:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","div",null,{"className":"page","children":[["$","header",null,{"className":"phead tight","children":[["$","div",null,{"className":"kicker","children":"About · sources & scope"}],["$","h1",null,{"className":"ptitle sm","children":"口径说明"}],["$","p",null,{"className":"lede","children":"这一页讲清楚：内容依据什么、有没有剧透、数字怎么来的。"}]]}],["$","section",null,{"className":"sec","children":[["$","h2",null,{"className":"sech","children":"内容依据"}],["$","div",null,{"className":"prose","children":[["$","p",null,{"children":"作品条目依据作品正文与公开资料（日文原题、出版年、人物身份、诡计机制）整理；剧情按章节线索重写为中文分节， 不复述原文句子。人物与线索条目只写「身份 / 在本案中的作用」，线索额外标注它在阅读时造成的误导。"}],["$","p",null,{"children":"作品年份取日文单行本首版年：《恶意》1996、《圣女的救济》2008、《盛夏方程式》2011、《解忧杂货店》2012、 《无名之町》2020。系列归属按东野圭吾作品序列：加贺恭一郎系列、伽利略系列、神尾武史（魔术师）系列，其余为独立长篇。"}]]}]]}],["$","section",null,{"className":"sec","children":[["$","h2",null,{"className":"sech","children":"全面泄底"}],["$","p",null,{"className":"takeaway","children":"本站直接写明凶手、动机与手法。没读完的书请不要点开对应详情页——尤其《恶意》《圣女的救济》《无名之町》， 它们的阅读快感几乎全部来自「不知道」。"}]]}],["$","section",null,{"className":"sec","children":[["$","h2",null,{"className":"sech","children":"数字怎么来的"}],["$","div",null,{"className":"kpis small","children":[["$","div",null,{"className":"kpi","children":[["$","b",null,{"children":5}],["$","span",null,{"children":"部作品"}]]}],["$","div",null,{"className":"kpi","children":[["$","b",null,{"children":48}],["$","span",null,{"children":"位人物"}]]}],["$","div",null,{"className":"kpi","children":[["$","b",null,{"children":40}],["$","span",null,{"children":"条线索"}]]}],["$","div",null,{"className":"kpi","children":[["$","b",null,{"children":29}],["$","span",null,{"children":"段破案链"}]]}]]}],["$","div",null,{"className":"prose","children":[["$","p",null,{"children":["全部数字由内容快照 ",["$","code",null,{"children":"content/books.json"}]," 统计得出，构建前跑门禁 ",["$","code",null,{"children":"tools/check_content.py"}],"： 每部至少有 4 节剧情、6 位人物、8 条线索、5 段破案链，且不允许空段；快照丢失或数量低于下限会直接挡住构建。"]}],["$","p",null,{"children":"站点为 Next 静态导出，无服务端、无第三方脚本、无字体外链；搜索与筛选都在浏览器内完成，不收集任何访问数据。"}]]}]]}]]}],null,["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]]}],"p":"$@10","v":null,"s":"$8"}}]]
+9:[["children",{"s":"about","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@a","v":"$b","s":"$8"},"c":"$Qc"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/common-website/higashino/_next/static/chunks/3huzznjt6nbs0.css","precedence":"next"}],["$","script","script-0",{"src":"/common-website/higashino/_next/static/chunks/0htn850pga6bz.js","async":true}]],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"children":["$","div",null,{"className":"shell","children":[["$","$L3",null,{}],["$","main",null,{"className":"main","children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[["$","div",null,{"className":"page","children":["$","header",null,{"className":"phead tight","children":[["$","div",null,{"className":"kicker","children":"404"}],["$","h1",null,{"className":"ptitle sm","children":"这一页不在馆里"}],["$","p",null,{"className":"lede","children":"地址可能改过。回全表重新挑一本。"}],["$","div",null,{"className":"cta","children":["$","$L6",null,{"className":"btn main","href":"/works/","children":"作品全表"}]}]]}]}],[]]}]}]]}]}]}]]}],"p":"$@7","v":null,"s":"$8"},"c":"$Q9"},"h":{"r":["$","$1","h",{"children":[null,["$","$L12",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L14",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$e",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"口径说明 · 东野圭吾解谜馆"}],["$","meta","1",{"name":"description","content":"恶意、解忧杂货店、圣女的救济、盛夏方程式、无名之町：剧情复盘、出场人物、关键线索与破案链逐部拆解。"}],["$","link","2",{"rel":"manifest","href":"/common-website/higashino/site.webmanifest"}],["$","link","3",{"rel":"icon","href":"/common-website/higashino/icon.svg","type":"image/svg+xml"}],["$","$L15","4",{}]]}]}],null]}],null]}],"p":"$@16","v":null,"s":"$8"}},"a":"$@17","u":"$@18","b":"X1WMwruGaIF6I3bCoWIxq"}
+f:null
+8:300
+18:true
+8:C
+17:0
+a:"$undefined"
+7:"$undefined"
+16:"$undefined"
+10:"$undefined"
