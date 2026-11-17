@@ -1,4 +1,4 @@
-:HL["/common-website/higashino/_next/static/chunks/0ug4lo1lfigwa.css","style"]
+:HL["/common-website/higashino/_next/static/chunks/1d5i0z_1h_n1o.css","style"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":"library","h":96,"c":"$Q2"}]]
-0:{"b":"zwJlsLL1eXvHqBIGio-zO","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"RZelN9kekY2xtggDVfe7d","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
