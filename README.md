@@ -8,6 +8,10 @@
 /                 站点索引页（列出所有站点）
 /nobel/           诺贝尔奖全表 1901–2026（交互版）
 /nobel-landing/   诺贝尔奖数据平台落地页（Feature-Rich Showcase 风格）
+/agent-atlas/     AI Agent 论文与大事件图谱 2021–2026
+/higashino/       东野圭吾解谜馆（Next 静态导出）
+/nobel/           诺贝尔奖全表 1901–2026
+/feynman/         费曼学习室（四步费曼学习台，静态版数据存浏览器）
 ```
 
 每个站点目录都是**自包含单页**：HTML/CSS/JS/数据全在一个 `index.html` 里，无外部依赖、无构建步骤。新增站点：新建 `<name>/index.html`，然后在根 `index.html` 的列表里加一张卡片，push 即生效。
